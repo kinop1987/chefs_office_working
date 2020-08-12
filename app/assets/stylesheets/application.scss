@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ .selector-for-some-widget {
+  box-sizing: content-box;
+}
+ @import "bootstrap";
