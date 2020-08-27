@@ -7,7 +7,7 @@ RSpec.describe Supplier, type: :model do
 
   describe 'バリデーション' do
     it 'name, email, telephone, website, password, picがあればOK' do
-      expect(@supplier.valid?).to eq(false)
+      expect(@supplier.valid?).to eq(true)
     end
 
     it 'nameが空だとNG' do
