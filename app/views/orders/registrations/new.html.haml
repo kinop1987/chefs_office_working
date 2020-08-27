@@ -9,22 +9,22 @@
           .col.border.border-primary.mx-auto{style: "margin: 20px"}
             .form{style: "padding: 20px"}
               .form-group
-                = f.label :会社名＋店舗名：
+                = f.label :name
                 = f.text_field :name, placeholder: "例） 株式会社 ◯◯◯◯ ◯◯店" 
               .form-group
-                = f.label :メールアドレス：
+                = f.label :email
                 = f.email_field :email, autofocus: true, autocomplete: "email" 
               .form-group
-                = f.label :電話番号：
+                = f.label :telephone
                 = f.text_field :telephone
               .form-group
-                = f.label :住所：
+                = f.label :address
                 = f.text_field :address
               .form-group
-                = f.label :パスワード：
+                = f.label :password
                 = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上"
               .form-group
-                = f.label :パスワード確認：
+                = f.label :password_confirmation
                 = f.password_field :password_confirmation, autocomplete: "new-password"
               .col
                 = f.submit "新規登録", class: "btn btn-primary"
