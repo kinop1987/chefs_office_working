@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-6.mx-auto
+      .col-6.mx-auto
+        %h2.text-center.text-success 
+          新規登録画面(受注者用)
+        = form_with model: @supplier, url: supplier_registration_path, local: true do |f|
+          = render "suppliers/shared/error_messages", resource: resource 
+          .col.border.border-primary.mx-auto{style: "margin: 20px"}
+            .form{style: "padding: 20px"}
+              .form-group
+                = f.label :会社名：
+                = f.text_field :name, placeholder: "例） 株式会社 ◯◯◯◯" 
+              .form-group
+                = f.label :メールアドレス：
+                = f.email_field :email, autofocus: true, autocomplete: "email" 
+              .form-group
+                = f.label :ホームページ：
+                = f.text_field :website, placehoder: "例} https://◯◯◯◯.com"
+              .form-group
+                = f.label :電話番号：
+                = f.text_field :telephone
+              .form-group
+                = f.label :担当者：
+                = f.text_field :pic
+              .form-group
+                = f.label :パスワード：
+                = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上"
+              .form-group
+                = f.label :パスワード確認：
+                = f.password_field :password_confirmation, autocomplete: "new-password"
+              .col
+                = f.submit "新規登録", class: "btn btn-primary"
+    
