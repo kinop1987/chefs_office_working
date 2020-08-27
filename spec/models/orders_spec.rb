@@ -6,7 +6,7 @@ RSpec.describe Order, type: :model do
   end
 
   describe 'バリデーション' do
-    it 'name, email, telephone, address, passwordがあればOK' do
+    it 'name, email, telephone, address, password, password_confirmationがあればOK' do
       expect(@order.valid?).to eq(false)
     end
 

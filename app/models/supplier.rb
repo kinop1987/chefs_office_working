@@ -9,5 +9,6 @@ class Supplier < ApplicationRecord
     validates :password, length: {minimum: 7}
     validates :telephone, format: {with: /0[1-9]\d{0,3}[-(]\d{1,4}[-)]\d{4}/}
     validates :pic, length: {maximum: 10}
+    validates :website, length: {maximum: 30}
   end
 end
