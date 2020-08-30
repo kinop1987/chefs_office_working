@@ -7,7 +7,7 @@ RSpec.describe Order, type: :model do
 
   describe 'バリデーション' do
     it 'name, email, telephone, address, password, password_confirmationがあればOK' do
-      expect(@order.valid?).to eq(false)
+      expect(@order.valid?).to eq(true)
     end
 
     it 'nameが空だとNG' do

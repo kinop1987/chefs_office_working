@@ -1,0 +1,14 @@
+.container
+  .row{ style: "margin: 5%"}
+    .col-6.mx-auto
+      .border.border-primary.mx-auto
+        = form_with model: @memo, local: true  do |f|
+          .form-group.text-center
+            %h2{ style: "margin: 1%"}
+              = f.label :text, class: "text-primary"
+            = f.text_area :text, class: "form-control mx-auto", style: "width: 80%", size: "30x20", id: "speechContent", placeholder: "最大３００字まで"
+          .form-group.text-center.d-flex.justify-content-around.mx-auto
+            = f.submit "登録", class: 'btn btn-primary '
+            = f.label "音声", class: 'btn btn-warning  ', id: "startSpeech"
+            = link_to "戻る", memos_path, class: "btn btn-danger "
+ 
