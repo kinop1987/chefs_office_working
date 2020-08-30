@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     registrations: 'suppliers/registrations'
   }
   root to: 'home#index'
+
+  resources :memos 
 end

@@ -1,0 +1,11 @@
+.container.h-100
+  .row.m-5
+    .col-12.d-flex.flex-column.h-100
+      .col-6.border.border-primary.mx-auto
+        %h2.text-primary.text-center.m-1 メモ帳
+        .col-10.border.border-primary.text-primary.m-3.mx-auto{ style: "height: 400px"}
+          = simple_format(@memo.text)
+      .col-6.mx-auto.h-25.mt-3
+        .col.d-flex.flex-row
+          = link_to "編集",edit_memo_path(@memo) , class: "btn btn-primary btn-lg mr-3"
+          = link_to "削除",memo_path(@memo), method:"delete", class: "btn btn-danger btn-lg "

@@ -1,0 +1,14 @@
+.container
+  .row.m-2
+    .col-12
+      .col-6.text-center.mx-auto.border.boder-primary 
+        = month_calendar events: @memos do |date, memos| 
+          .col
+            = date.day
+          - memos.each do |memo|
+            = link_to "メモ", memo_path(memo)
+    .col-6.text-center.mx-auto.border.border-primary.m-1.d-flex
+      .col.m-3
+        =link_to "メモを取る", new_memo_path, class: "btn-primary btn-lg" 
+      .col.m-3
+        = link_to "戻る", root_path, class: "btn-danger btn-lg" 
