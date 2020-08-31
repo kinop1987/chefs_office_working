@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-10.mx-auto.mt-5
+      .col-10.border.border-primary.mx-auto
+        = form_with model: @product,  local: true do |f|
+          %h2.text-center.text-info
+            商品情報編集
+          = render partial: 'layouts/error_form', locals: { model: f.object }
+          .form-group.text-center
+            = f.label :product_name, class: "text-primary"
+            = f.text_field :product_name, class: "form-control mx-auto w-50"
+          .form-group.text-center
+            = f.label :product_price, class: "text-primary "
+            = f.text_field :product_price, class: "form-control mx-auto w-50"
+          .form-group.text-center
+            = f.label :product_unit, class: "text-primary "
+            = f.text_field :product_unit, class: "form-control mx-auto w-50"
+          .form-group.text-center
+            = f.submit " 編集する", class: 'btn btn-primary btn-lg '
+            = link_to "戻る", products_path, class: "btn btn-danger btn-lg"

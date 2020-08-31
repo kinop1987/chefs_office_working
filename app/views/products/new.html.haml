@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-8.mx-auto
+      %h2.m-3.text-center.text-info 商品登録
+      = form_with model: @form,  url: products_path, method: :post , local: true do |fb|
+        %table.table.text-primary
+          %thread
+            %tr
+              %th 登録
+              %th 商品名
+              %th 販売価格（円）
+              %th 発注単位
+          %tbody.table-bordered
+          = fb.fields_for :products do |f|
+            = render partial: 'layouts/error_form', locals: { model: f.object }
+            %tr
+              %td.text-center
+                = f.check_box :availability, class: 'checkbox'
+              %td
+                = f.text_field :product_name, class: 'form-control'
+              %td
+                = f.text_field :product_price, class: 'form-control', placeholder: "整数１０桁まで"
+              %td
+                = f.text_field :product_unit, class: 'form-control'
+                = f.hidden_field :supplier_id, value: current_supplier.id
+        .text-center
+          = fb.submit "一括登録", class: "btn btn-primary "
+          = link_to "戻る", products_path, class: "btn btn-danger"

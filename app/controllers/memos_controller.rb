@@ -1,5 +1,5 @@
 class MemosController < ApplicationController
-  before_action :authenticate_order!
+  before_action :collect_access_chekking
   before_action :set_memo, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,6 +17,9 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     if @memo.save
       redirect_to memos_path, notice: "メモを作成しました"
+    else
+      flash.now[:alert] = "メモ作成に失敗しました"
+      render :new
     end
   end
 
@@ -26,6 +29,10 @@ class MemosController < ApplicationController
   def update
     if @memo.update(memo_params)
       redirect_to memos_path, notice: "メモを編集しました"
+      
+    else
+      flash.now[:alert] = "メモの編集に失敗しました"
+      render :edit
     end
   end
 
@@ -49,6 +56,10 @@ class MemosController < ApplicationController
       flash.now[:alert] = "正常なアクセスではありません"
       render root_path
     end
+  end
+
+  def collect_access_chekking
+    redirect_to root_path unless order_signed_in?
   end
 
 end

@@ -2,6 +2,7 @@
 class Orders::RegistrationsController < Devise::RegistrationsController
   before_action :configure_order_permitted_parameters, if: :devise_controller?
 
+
   protected
 
   def configure_order_permitted_parameters

@@ -1,20 +1,21 @@
 .container
   .row
-    .col-6.mx-auto
-      .col-10.mx-auto
+    .col.mx-auto
+      .col-10.mx-auto.mt-5
         %h4.text-center.text-success 
           ログイン画面（受注者用）
+        .col.p-3
+          = render "suppliers/shared/error_messages", resource: resource 
         = form_with model: @supplier, url: supplier_session_path, local: true do |f|
-          = render "orders/shared/error_messages", resource: resource 
-          .col.border.border-primary.mx-auto{style: "margin: 20px"}
-            .form{style: "padding: 20px"}
-              .form-group
-                = f.label :メールアドレス：
-                = f.email_field :email, autofocus: true, autocomplete: "email" 
-              .form-group
-                = f.label :パスワード：
-                = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上"
+          .col.border.border-primary.mx-auto.m-2
+            .form.p-2.text-primary
+              .form-group.d-flex.justify-content-between
+                = f.label :email
+                = f.email_field :email, autofocus: true, autocomplete: "email" , class: "w-50"
+              .form-group.d-flex.justify-content-between
+                = f.label :password
+                = f.password_field :password, autocomplete: "new-password", class: "w-50"
               .col
                 = f.submit "ログイン", class: "btn btn-primary"
-      .col-6.mx-auto
+      .col-6.mx-auto.mt-3
         = link_to "新規登録はこちら", new_supplier_registration_path, class: "btn btn-success"

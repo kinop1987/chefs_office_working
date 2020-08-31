@@ -3,6 +3,7 @@
     .col-6.mx-auto
       .border.border-primary.mx-auto
         = form_with model: @memo, local: true  do |f|
+          = render "layouts/error_form", model: f.object
           .form-group.text-center
             %h2{ style: "margin: 1%"}
               = f.label :text, class: "text-primary"

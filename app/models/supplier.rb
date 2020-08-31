@@ -1,6 +1,7 @@
 class Supplier < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :products, dependent: :destroy
 
   with_options presence: true do
     validates :name,     length: {maximum: 30}
@@ -11,4 +12,5 @@ class Supplier < ApplicationRecord
     validates :pic, length: {maximum: 10}
     validates :website, length: {maximum: 30}
   end
+
 end

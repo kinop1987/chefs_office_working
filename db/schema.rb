@@ -1,4 +1,16 @@
-ActiveRecord::Schema.define(version: 2020_08_27_080109) do
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_08_30_180144) do
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "text", null: false
@@ -23,6 +35,17 @@ ActiveRecord::Schema.define(version: 2020_08_27_080109) do
     t.index ["reset_password_token"], name: "index_orders_on_reset_password_token", unique: true
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "product_name", null: false
+    t.integer "product_price"
+    t.string "product_unit", null: false
+    t.bigint "supplier_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "availability", default: false, null: false
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
+  end
+
   create_table "suppliers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +63,5 @@ ActiveRecord::Schema.define(version: 2020_08_27_080109) do
   end
 
   add_foreign_key "memos", "orders"
+  add_foreign_key "products", "suppliers"
 end
