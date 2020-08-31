@@ -1,34 +1,37 @@
 .container
   .row
-    .col-6.mx-auto
-      .col-6.mx-auto
-        %h2.text-center.text-success 
+    .col.mx-auto
+      .col-10.mx-auto.mt-5
+        %h4.text-center.text-success 
           新規登録画面(受注者用)
-        = form_with model: @supplier, url: supplier_registration_path, local: true do |f|
+        .col.p-3
           = render "suppliers/shared/error_messages", resource: resource 
-          .col.border.border-primary.mx-auto{style: "margin: 20px"}
-            .form{style: "padding: 20px"}
-              .form-group
+        = form_with model: @supplier, url: supplier_registration_path, local: true do |f|
+          .col.border.border-primary.mx-auto.m-2
+            .form.p-2.text-primary
+              .form-group.d-flex.justify-content-between
                 = f.label :name
-                = f.text_field :name, placeholder: "例） 株式会社 ◯◯◯◯" 
-              .form-group
+                = f.text_field :name, placeholder: "例）株式会社 ◯◯◯◯" , class: "w-50"
+              .form-group.d-flex.justify-content-between
                 = f.label :email
-                = f.email_field :email, autofocus: true, autocomplete: "email" 
-              .form-group
-                = f.label :website
-                = f.text_field :website, placehoder: "例} https://◯◯◯◯.com"
-              .form-group
+                = f.email_field :email, autofocus: true, autocomplete: "email" , class: "w-50"
+              .form-group.d-flex.justify-content-between
                 = f.label :telephone
-                = f.text_field :telephone
-              .form-group
+                = f.text_field :telephone, class: "w-50", placeholder: "例）03-0000-0000 (-)ハイフンあり"
+              .form-group.d-flex.justify-content-between
+                = f.label :website
+                = f.text_field :website, class: "w-50", placeholder: "例）http://www.sample.com"
+              .form-group.d-flex.justify-content-between
                 = f.label :pic
-                = f.text_field :pic
-              .form-group
+                = f.text_field :pic, class: "w-50"
+              .form-group.d-flex.justify-content-between
                 = f.label :password
-                = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上"
-              .form-group
+                = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上", class: "w-50"
+              .form-group.d-flex.justify-content-between
                 = f.label :password_confirmation
-                = f.password_field :password_confirmation, autocomplete: "new-password"
+                = f.password_field :password_confirmation, autocomplete: "new-password", class: "w-50"
               .col
                 = f.submit "新規登録", class: "btn btn-primary"
+
+
     

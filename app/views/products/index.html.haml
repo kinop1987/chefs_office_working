@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-12
+      .col-10.mx-auto
+        %h2.m-3.text-info.text-center
+          登録商品一覧
+        %table.table.text-primary
+          %thread.text-right
+            %tr
+              %th 商品名
+              %th 販売価格(円)
+              %th 発注単位
+            %tbody
+            - @products.each do |product|
+              %tr.item
+                %td
+                  = product.product_name
+                %td
+                  = product.product_price
+                %td
+                  = product.product_unit
+                %td
+                  = link_to "編集", edit_product_path(product),   class:"btn btn-info"
+                %td
+                  = link_to "削除", product_path(product), method:  "delete",class:"btn btn-danger"
+      .col-10.mx-auto
+        =link_to "新規商品登録", new_product_path, class: "btn   btn-primary text-center m-3"

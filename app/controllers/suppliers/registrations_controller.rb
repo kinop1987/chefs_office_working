@@ -1,6 +1,7 @@
 class Suppliers::RegistrationsController < Devise::RegistrationsController
   before_action :configure_supplier_permitted_parameters, if: :devise_controller?
 
+
   protected
 
   def configure_supplier_permitted_parameters

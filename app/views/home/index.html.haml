@@ -16,4 +16,9 @@
         .col{ style: "padding: 3%"}
           .span.glyphicon.glyphicon-comment{ aria:{hidden: "true"}, style: "font-size:  50px"}
           %h3.text-center 音声入力が可能なため、手が塞がっていても業務が行えます。
+    .col
+      -if order_signed_in?
+        = link_to "ログアウト", destroy_order_session_path, method: :delete
+      -if supplier_signed_in?
+        = link_to "ログアウト", destroy_supplier_session_path, method: :delete
 
