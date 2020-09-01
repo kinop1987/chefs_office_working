@@ -26,6 +26,7 @@ ja:
         product_name: "商品名"
         product_price: "販売価格（円）"
         product_unit: "発注単位"
+        availability: "登録"
     models:
       order: 発注者
       supplier: 受注者
