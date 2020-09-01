@@ -2,7 +2,8 @@ class Supplier < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :products, dependent: :destroy
-
+  has_many :contracts
+  has_many :orders, through: :contracts
   with_options presence: true do
     validates :name,     length: {maximum: 30}
     validates :email,    uniqueness: {case_sensitive: false},
