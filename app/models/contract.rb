@@ -9,6 +9,14 @@ class Contract < ApplicationRecord
 
   validate  :date_not_before_today
 
+  accepts_nested_attributes_for :contract_details
+  before_validation :calculate_contract_total_price
+
+  def calculate_contract_total_price
+    contract_details.each(&:calculate_contract_detail_total_price)
+    self.total_price = contract_details.map(&:total_price).sum
+  end
+
   def date_not_before_today
     errors.add(:delivery_date) if dalivery_date.nil? || delivery_date < Date.today
   end
