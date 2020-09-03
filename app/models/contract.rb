@@ -6,7 +6,7 @@ class Contract < ApplicationRecord
     validates :total_price
     validates :delivery_date
   end
-
+  validates :comment,     length: {maximum: 200}
   validate  :date_not_before_today
 
   accepts_nested_attributes_for :contract_details
@@ -18,6 +18,6 @@ class Contract < ApplicationRecord
   end
 
   def date_not_before_today
-    errors.add(:delivery_date) if dalivery_date.nil? || delivery_date < Date.today
+    errors.add(:delivery_date) if delivery_date.nil? || delivery_date < Date.today
   end
 end

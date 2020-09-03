@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_021630) do
+ActiveRecord::Schema.define(version: 2020_09_03_041828) do
 
   create_table "contract_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "unit_price"
     t.integer "quantity", null: false
-    t.integer "product_name", null: false
+    t.string "product_name", null: false
     t.integer "total_price"
     t.bigint "contract_id", null: false
     t.bigint "order_id", null: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "delivery_date", null: false
+    t.string "product_unit", null: false
     t.index ["contract_id"], name: "index_contract_details_on_contract_id"
     t.index ["order_id"], name: "index_contract_details_on_order_id"
     t.index ["supplier_id"], name: "index_contract_details_on_supplier_id"
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_021630) do
     t.date "delivery_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "comment"
     t.index ["order_id"], name: "index_contracts_on_order_id"
     t.index ["supplier_id"], name: "index_contracts_on_supplier_id"
   end
