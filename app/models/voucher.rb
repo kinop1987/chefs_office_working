@@ -10,8 +10,8 @@ class Voucher < ApplicationRecord
   validates :comment, length: {maximum: 200}
   validate  :date_not_before_today
 
-  accepts_nested_attributes_for :contract_details
-  before_validation :calculate_contract_total_price
+  accepts_nested_attributes_for :voucher_details
+  before_validation :calculate_voucher_total_price
 
   def calculate_voucher_total_price
     voucher_details.each(&:calculate_voucher_detail_total_price)

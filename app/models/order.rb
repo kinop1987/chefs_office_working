@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   has_many :memos, dependent: :destroy
   has_many :contracts, dependent: :destroy
   has_many :suppliers, through: :contracts
+  has_many :vouchers
   with_options presence: true do
     validates :name,     length: {maximum: 30}
     validates :email,    uniqueness: {case_sensitive: false},
