@@ -1,5 +1,7 @@
 class ContractsController < ApplicationController
-  before_action :create_params_conracts , only: [:create,:confirm]
+  before_action :create_params_contracts, only: [:create,:confirm]
+  before_action :set_up_supplier, only: [:new,:create,:confirm]
+  before_action :set_up_order, only: [:index, :new, :create, :show, :confirm, :group]
 
   def index
     @suppliers = Supplier.all
@@ -13,15 +15,13 @@ class ContractsController < ApplicationController
 
   def create
     if @contract.save
-      redirect_to contracts_path, success: "発注を完了しました"
+      redirect_to order_contracts_path(@order), success: "発注を完了しました"
     else
       flash.now[:alert] = "注文に失敗しました"
-      render :new
+      render "/orders/#{@order.id}/contracts/new/#{supplier.id}"
     end
   end
     
-
-  end
 
   def confirm
     
@@ -41,21 +41,32 @@ class ContractsController < ApplicationController
 
   def contract_params
     params
-      .require(:contract).permit(:user_id,
+      .require(:contract).permit(:order_id,
                               :supplier_id,
                               :total_price,
-                              :delivery_date)
+                              :delivery_date,
+                              :comment)
   end
 
   def contract_details_params
     params.require(:contract_details).map do |param|
-      ActionController::Parameters.new(param.to_unsafe_h).permit(:unit_price, :contract_id, :quantity, :product_name, :total_price, :order_id, :supplier_id)
+      ActionController::Parameters.new(param.to_unsafe_h).permit(:unit_price, :quantity, :product_name, :total_price, :order_id, :supplier_id, :delivery_date, :product_unit)
     end
   end
 
 
-  def create_params_order
+  def create_params_contracts
     @contract = Contract.new(contract_params)
     @contract_details = @contract.contract_details.new(contract_details_params)
   end
+
+  def set_up_supplier
+    @supplier = Supplier.find(params[:supplier_id])
+    @products = @supplier.products
+  end
+
+  def set_up_order
+    @order = Order.find(params[:order_id])
+  end
+
 end

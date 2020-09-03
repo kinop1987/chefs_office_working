@@ -1,0 +1,10 @@
+.container
+  .row.m-1
+    .col.mx-auto.mt-5
+      .col-6.border.border-primary.mx-auto
+        .text-primary.text-center
+          %h2 取引先一覧
+        .col
+        - @suppliers.each do |supplier|
+          %h4.text-center= link_to supplier.name, "/orders/#{@order.id}/contracts/new/#{supplier.id}"
+  

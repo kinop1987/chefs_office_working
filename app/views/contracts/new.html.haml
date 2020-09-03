@@ -1,0 +1,49 @@
+.container
+  .row
+    .col
+      .col
+        %table.table
+          %tr
+            %th.text-primary.text-right 取引先：
+            %th.text-success.text-left=@supplier.name
+      .col
+        = form_with model:[@order, @contract] , url: "/orders/#{@order.id}/contracts/#{@supplier.id}/confirm", local: true do |form|
+          = form.hidden_field :supplier_id, value: @supplier.id
+          = form.hidden_field :order_id, value: current_order.id
+          .col.text-right
+            = form.label :delivery_date, class: "text-primary "
+            = form.date_field :delivery_date, value: I18n.l(Date.today), id: "deliveryDate"
+          %table.table.table-bordered.m-1
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位 
+                %th.text-center.text-primary 配達日  
+            %tbody
+              - @contract_details.each do |contract_detail| 
+                = fields_for "contract_details[]", contract_detail, index: nil  do |f|
+                  - @products.each do |product|
+                    %tr
+                      %td.text-center.text-primary.w-25
+                        =  product.product_name
+                      %td.text-center.text-primary
+                        = product.product_price
+                      %td.text-center.text-primary
+                        = f.text_field :quantity, class: "form-control quantity"
+                      %td.text-center.text-primary.w-25
+                        = product.product_unit
+                      %td.text-center.text-primary
+                        = f.date_field :delivery_date, class: "deliveryDate"
+                        = f.hidden_field :product_name, value: product.product_name
+                        = f.hidden_field :unit_price, value: product.product_price
+                        = f.hidden_field :product_unit, value: product.product_unit
+                        = f.hidden_field :order_id, value: current_order.id
+                        = f.hidden_field :supplier_id, value: @supplier.id
+          .col-10.m-2.text-primary
+            = form.label :comment
+            = form.text_field :comment, placeholder: "200文字以内", class: "w-75 "
+          .col.text-right
+            = form.submit "確認",class: "btn btn-info confirm"
+            = link_to "戻る", order_contracts_path(current_order), class: "btn btn-danger"
