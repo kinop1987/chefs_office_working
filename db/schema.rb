@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_041828) do
+ActiveRecord::Schema.define(version: 2020_09_03_103108) do
 
   create_table "contract_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "unit_price"
@@ -91,6 +91,36 @@ ActiveRecord::Schema.define(version: 2020_09_03_041828) do
     t.index ["reset_password_token"], name: "index_suppliers_on_reset_password_token", unique: true
   end
 
+  create_table "voucher_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "product_name", null: false
+    t.integer "unit_price", null: false
+    t.string "product_unit", null: false
+    t.integer "total_price", null: false
+    t.date "delivery_date", null: false
+    t.bigint "order_id", null: false
+    t.bigint "supplier_id", null: false
+    t.bigint "voucher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", null: false
+    t.index ["order_id"], name: "index_voucher_details_on_order_id"
+    t.index ["supplier_id"], name: "index_voucher_details_on_supplier_id"
+    t.index ["voucher_id"], name: "index_voucher_details_on_voucher_id"
+  end
+
+  create_table "vouchers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "total_price", null: false
+    t.date "delivery_date", null: false
+    t.bigint "order_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "comment"
+    t.boolean "confirm", default: false, null: false
+    t.index ["order_id"], name: "index_vouchers_on_order_id"
+    t.index ["supplier_id"], name: "index_vouchers_on_supplier_id"
+  end
+
   add_foreign_key "contract_details", "contracts"
   add_foreign_key "contract_details", "orders"
   add_foreign_key "contract_details", "suppliers"
@@ -98,4 +128,9 @@ ActiveRecord::Schema.define(version: 2020_09_03_041828) do
   add_foreign_key "contracts", "suppliers"
   add_foreign_key "memos", "orders"
   add_foreign_key "products", "suppliers"
+  add_foreign_key "voucher_details", "orders"
+  add_foreign_key "voucher_details", "suppliers"
+  add_foreign_key "voucher_details", "vouchers"
+  add_foreign_key "vouchers", "orders"
+  add_foreign_key "vouchers", "suppliers"
 end

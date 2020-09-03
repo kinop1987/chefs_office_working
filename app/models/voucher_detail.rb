@@ -1,7 +1,8 @@
-class ContractDetail < ApplicationRecord
-  belongs_to :contract
+class VoucherDetail < ApplicationRecord
+  belongs_to :voucher
   with_options presence: true do
     validates :product_name
+    validates :unit_price
     validates :quantity, numericality: {only_integer: true, greater_than_or_equal_to: 0 }
     validates :delivery_date
     validates :product_unit
