@@ -36,6 +36,7 @@ ja:
         unit_price: "注文単価"
         procuct_name: "商品名"
         total_price: "小計"
+        delivery_date: "配達日"
     models:
       order: 発注者
       supplier: 受注者
