@@ -6,9 +6,6 @@ $(document).on('turbolinks:load', function(){
         $(element).parent().parent().remove();
       }
     })
-    if ($('.comment').val() == ""){
-      $('.commentPlace').remove();
-    }
   });
 
   $('#deliveryDate').change(function(){

@@ -10,7 +10,7 @@ class VoucherDetail < ApplicationRecord
   validate  :date_not_before_today
 
 
-  def calculate_contract_detail_total_price
+  def calculate_voucher_detail_total_price
     self.total_price = self.unit_price * self.quantity
   rescue
     self.total_price = 0

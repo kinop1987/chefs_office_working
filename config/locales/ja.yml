@@ -29,14 +29,25 @@ ja:
         availability: "登録"
       contract:
         total_price: "合計金額"
-        delivery_date: "配達日"
+        delivery_date: "配達希望日"
         comment: "コメント："
-      contract_detal:
+      contract_detail:
         quantity: "数量"
         unit_price: "注文単価"
         procuct_name: "商品名"
         total_price: "小計"
-        delivery_date: "配達日"
+        delivery_date: "配達希望日"
+      voucher:
+        total_price: "合計金額"
+        delivery_date: "納品日"
+        comment: "コメント："
+        confirm: "受領"
+      voucher_detail:
+        quantity: "数量"
+        unit_price: "注文単価"
+        procuct_name: "商品名"
+        total_price: "小計"
+        delivery_date: "納品日"
     models:
       order: 発注者
       supplier: 受注者
@@ -44,6 +55,8 @@ ja:
       product: 商品
       contract: 注文
       contract_detail: 注文詳細
+      voucher: 伝票
+      voucher_detail: 伝票詳細
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

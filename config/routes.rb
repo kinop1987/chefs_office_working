@@ -13,22 +13,23 @@ Rails.application.routes.draw do
 
   resources :memos 
   resources :products
-  resources :orders do 
-    get "contracts/new/:supplier_id", to: "contracts#new"
-    post "contracts/:supplier_id", to: "contracts#create" 
-    post "contracts/:supplier_id/confirm", to: "contracts#confirm"
-    get "contracts/:contract_id",to: "contracts#show"
-    get "contracts/group/:delivery_date", to: "contracts#group"
-    get "contracts", to: "contracts#index"
-  end
-  resources :suppliers do
-    get "vouchers/:order_id/new", to: "vouchers#new"
-    post "vouchers/:order_id", to: "vouchers#create"
-    post "vouchers/:order_id/confirm", to:"vouchers#confirm"
-    get "vouchers/:voucher_id", to: "vouchers#show"
-    get "vouchers/group/:delivery_date", to: "vouchers#group"
-    get "vouchers", to: "vouchers#index"
-    get "vouchers/:voucher_id/edit", to: "vouchers#edit"
-  end
+  
+  get "contracts/:supplier_id/new", to: "contracts#new", as: :new_contract
+  post "contracts/:supplier_id", to: "contracts#create" , as: :create_contract
+  post "contracts/:supplier_id/confirm", to: "contracts#confirm", as: :confirm_contract
+  get "contracts/:contract_id",to: "contracts#show", as: :show_contract
+  get "contracts/group/:delivery_date", to: "contracts#group", as: :group_contract
+  get "contracts", to: "contracts#index"
+  
+  
+  get "vouchers/:contract_id/new", to: "vouchers#new", as: :new_voucher
+  post "vouchers/:contract_id", to: "vouchers#create", as: :create_voucher
+  post "vouchers/:contract_id/confirm", to:"vouchers#confirm", as: :confirm_voucher
+  get "vouchers/group/:delivery_date", to: "vouchers#group", as: :group_voucher
+  get "vouchers/orders_voucher", to: "vouchers#orders_voucher", as: :orders_voucher
+  get "vouchers/:voucher_id/edit", to: "vouchers#edit", as: :edit_voucher
+  get "vouchers/receipt", to: "vouchers#receipt", as: :receipt_voucher
+  post "vouchers/:voucher_id/show", to: "vouchers#show", as: :show_receipt
+  post "vouchers/:voucher_id/update", to: "vouchers#update", as: :update_voucher
 
 end

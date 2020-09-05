@@ -5,7 +5,7 @@ class Voucher < ApplicationRecord
   with_options presence: true do
     validates :total_price
     validates :delivery_date
-    validates :confirm, inclusion: { in: [true, false] }
+    validates :confirm
   end
   validates :comment, length: {maximum: 200}
   validate  :date_not_before_today
@@ -21,4 +21,6 @@ class Voucher < ApplicationRecord
   def date_not_before_today
     errors.add(:delivery_date) if delivery_date.nil? || delivery_date < Date.today
   end
+
+
 end

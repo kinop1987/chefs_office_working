@@ -1,7 +1,7 @@
 .row.d-flex
   .col.border.border-primary.text-center= link_to 'トップ', root_path
   - if order_signed_in? 
-    .col.border.border-primary.text-center= link_to '発注', "/orders/#{current_order.id}/contracts"
+    .col.border.border-primary.text-center= link_to '発注', contracts_path
     .col.border.border-primary.text-center= link_to '発注メモ', memos_path
     //.col.border.border-primary.text-center= link_to '取引先', suppliers_path
     //.col.border.border-primary.text-center= link_to '原価計算', calculations_path
@@ -9,7 +9,7 @@
     .col.border.border-primary.text-center=link_to "ログアウト", destroy_order_session_path, method: :delete
   - elsif supplier_signed_in? 
     .col.border.border-primary.text-center= link_to '商品登録', products_path
-    .col.border.border-primary.text-center= link_to '受注確認', receipt_path
+    //.col.border.border-primary.text-center= link_to '受注確認', vouchers_path
     .col.border.border-primary.text-center=link_to "ログアウト", destroy_supplier_session_path, method: :delete
   - else
     .col.border.border-primary.text-center= link_to '利用する', new_order_session_path
