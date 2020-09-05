@@ -1,0 +1,58 @@
+.container
+  .row
+    .col
+      .col-10.mx-auto.mb-2
+        %h2.text-center.text-info.border.border-primary 本日の業務
+        %p.text-success.text-right
+          = l Time.current
+      .col-10.border.border-primary.mb-4.mx-auto
+        .col.bg-primary
+          %h2.text-white.text-center 取引金額
+        .col.d-flex.justify-content-around.text-info
+          %p="昨日：#{@yesterday_total_vouchers}円"
+          %p="今日：#{@today_total_receipts}円"
+          %p="今月の合計：#{@this_month_receipts}円"
+        .col
+          %p.text-right
+            = link_to "原価計算", "#", class: "btn btn-primary"
+      .col-10.border.border-primary.mb-4.mx-auto
+        .col.bg-primary
+          %h2.text-white.text-center 受領画面
+        .col.text-center
+          -if @receipts >= 1
+            %p.text-info 
+              %span.text-danger= @receipt
+              件の未受領伝票があります。受領してください
+            %button.btn.btn-primary
+              = link_to "受領画面", receipt_voucher_path
+          -else @receipts == nil
+            %p.text-danger 未受領の伝票はありません
+      .col-10.border.border-primary.mb-4.mx-auto
+        .col.bg-primary
+          %h2.text-white.text-center 天気予報
+        .col.mx-auto.d-flex.justify-content-between#weather
+      .col-10.mx-auto.d-flex.mb-2{ style: "height: 20%"}
+        .col-6.border.border-primary.mr-3
+          .col.bg-primary
+            %h2.text-white.text-center お客様情報
+          .col
+            .col.d-flex.flex-column
+              %p.text-info.text-justify お客様名：  
+              %p.text-primary.text-center= current_order.name 
+            .col.d-flex.flex-column
+              %p.text-info.text-justify メールアドレス：  
+              %p.text-primary.text-center= current_order.email
+            .col.d-flex.flex-column
+              %p.text-info.text-justify 電話番号：  
+              %p.text-primary.text-center= current_order.telephone
+            .col.d-flex.flex-column
+              %p.text-info.text-justify 住所：  
+              %p.text-primary.text-center= current_order.address
+        .col-6.border.border-primary
+          .col.bg-primary
+            %h2.text-white.text-center ニュース一覧
+          .col{ style: "height: 80%; overflow-y: auto;"}
+            - @moments.each do |moment|
+              %p.text-success
+                = link_to "#{moment["title"]}", "#{moment["url"]}"
+        

@@ -1,18 +1,22 @@
 .container
   .row
-    .col
-      .jumbotron.border.border-primary{ style: "margin: 2%"}
-        %h1.text-center{ style: "color: #4169e1"} Chefs Office Working
-        %p.text-center{ style: "color: #4682b4"} chefs offce workは、あなたの調理場内の業務を強力にサポートします。
-      .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
-        .col{ style: "padding: 3%"}
-          .span.glyphicon.glyphicon-shopping-cart{ aria:{hidden: "true"}, style: "font-size: 50px"}
-          %h3.text-center 発注業務を一括で管理し、事務処理時間を大幅に減らします。
-      .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
-        .col{ style: "padding: 3%"}
-          .span.glyphicon.glyphicon-info-sign{ aria:{hidden: "true"}, style: "font-size: 50px"}
-          %h3.text-center 正確な原価率の算出・月次の早期確定で、経営の見える化を実現します。
-      .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
-        .col{ style: "padding: 3%"}
-          .span.glyphicon.glyphicon-comment{ aria:{hidden: "true"}, style: "font-size:  50px"}
-          %h3.text-center 音声入力が可能なため、手が塞がっていても業務が行えます。
+    -if order_signed_in?
+      .col
+        = render "order"
+    -else
+      .col
+        .jumbotron.border.border-primary{ style: "margin: 2%"}
+          %h1.text-center{ style: "color: #4169e1"} Chefs Office Working
+          %p.text-center{ style: "color: #4682b4"} chefs offce workは、あなたの調理場内の業務を強力にサポートします。
+        .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
+          .col{ style: "padding: 3%"}
+            .span.glyphicon.glyphicon-shopping-cart{ aria:{hidden: "true"}, style: "font-size: 50px"}
+            %h3.text-center 発注業務を一括で管理し、事務処理時間を大幅に減らします。
+        .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
+          .col{ style: "padding: 3%"}
+            .span.glyphicon.glyphicon-info-sign{ aria:{hidden: "true"}, style: "font-size: 50px"}
+            %h3.text-center 正確な原価率の算出・月次の早期確定で、経営の見える化を実現します。
+        .jumbotoron.border.border-primary.text-primary{ style: "margin: 2%"}
+          .col{ style: "padding: 3%"}
+            .span.glyphicon.glyphicon-comment{ aria:{hidden: "true"}, style: "font-size:  50px"}
+            %h3.text-center 音声入力が可能なため、手が塞がっていても業務が行えます。
