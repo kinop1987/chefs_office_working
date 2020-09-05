@@ -41,7 +41,7 @@ ja:
         total_price: "合計金額"
         delivery_date: "納品日"
         comment: "コメント："
-        confirm: "受領"
+        confirm: "受領チェック"
       voucher_detail:
         quantity: "数量"
         unit_price: "注文単価"
