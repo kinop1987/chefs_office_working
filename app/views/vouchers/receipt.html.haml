@@ -1,45 +1,37 @@
-.container
+.container.h-75.overflow-auto
   .row
-    .col-8.mx-auto
+    .col-10.mx-auto
       - @vouchers.each do |voucher|
-        = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
-          %table.table
-            %tread
-              %tr
-                %th.text-center.text-primary 取引先
-                %th.text-center.text-primary 納品日
-                %th.text-center.text-primary 合計金額
-            %tbody
-              %tr
-                %th.text-center.text-primary
-                  = voucher.supplier.name
-                %th.text-center.text-primary
-                  = voucher.delivery_date
-                %th.text-center.text-primary
-                  = voucher.total_price
-          %table.table.table-bordered.mt-1
-            %thread
-              %tr
-                %th.text-center.text-primary 商品名
-                %th.text-center.text-primary 単価（円）
-                %th.text-center.text-primary 数量
-                %th.text-center.text-primary 単位
-                %th.text-center.text-primary 小計 
-            %tbody
-            - voucher.voucher_details.each do |voucher_detail| 
-              %tr
-                %td.text-center.text-primary
-                  = voucher_detail.product_name
-                %td.text-center.text-primary
-                  = voucher_detail.unit_price
-                %td.text-center.text-primary
-                  = voucher_detail.quantity
-                %td.text-center.text-primary
-                  = voucher_detail.product_unit
-                %th.text-center.text-primary
-                  = voucher_detail.total_price
-          .col.text-right.mb-2
-            = f.submit "受領画面", class: "btn btn-success"
+        .col.border.border-info{ style: "height: 20%; overflow-y: auto;"}
+          = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
+            .col.d-flex
+              %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
+              %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
+              %p.text-primary= "合計金額：#{voucher.total_price}円"
+              %button.btn.btn-success= f.submit "受領画面"
+            %table.table.table-bordered.mt-1
+              %thread
+                %tr
+                  %th.text-center.text-primary 商品名
+                  %th.text-center.text-primary 単価（円）
+                  %th.text-center.text-primary 数量
+                  %th.text-center.text-primary 単位
+                  %th.text-center.text-primary 小計 
+              %tbody
+              - voucher.voucher_details.each do |voucher_detail| 
+                %tr
+                  %td.text-center.text-primary
+                    = voucher_detail.product_name
+                  %td.text-center.text-primary
+                    = voucher_detail.unit_price
+                  %td.text-center.text-primary
+                    = voucher_detail.quantity
+                  %td.text-center.text-primary
+                    = voucher_detail.product_unit
+                  %th.text-center.text-primary
+                    = "#{voucher_detail.total_price}円"
+            .col.text-danger
+              = voucher.comment
     -if @vouchers.count == 0
       .col-8.mx-auto
         %h4.text-danger.text-center 未受領の伝票はありません

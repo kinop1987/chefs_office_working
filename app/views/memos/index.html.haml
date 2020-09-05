@@ -1,14 +1,13 @@
 .container
   .row.m-2
-    .col.d-flex.flex-column
-      .col-6.text-center.mx-auto
-        = month_calendar events: @memos do |date, memos| 
-          .col
-            = date.day
-          - memos.each do |memo|
-            = link_to "メモ", memo_path(memo)
-        .col.m-1.d-flex
-          .col.mr-3
-            =link_to "メモを取る", new_memo_path, class: "btn-primary btn-lg" 
-          .col
-            = link_to "戻る", root_path, class: "btn-danger btn-lg" 
+    .col.d-flex.flex-column.text-centr.mx-auto
+      = month_calendar events: @memos do |date, memos| 
+        .col
+          = date.day
+        - memos.each do |memo|
+          = link_to "メモ", memo_path(memo)
+      .col.m-1.d-flex
+        .col
+          =link_to "メモを取る", new_memo_path, class: "btn-primary btn-lg" 
+        .col
+          = link_to "戻る", root_path, class: "btn-danger btn-lg" 

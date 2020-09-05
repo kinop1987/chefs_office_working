@@ -7,15 +7,14 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body.overflow-auto
     = render "home/head_tab"
     - if order_signed_in?
-      .col.m-1
-        %h4.text-right.text-info
-          = "#{current_order.name}：様"
+      %h4.text-right.text-info
+        = "#{current_order.name}：様"
     - if supplier_signed_in?
-      .col.m-1
-        %h4.text-right.text-info
-          = "#{current_supplier.name}：様"
+      %h4.text-right.text-info
+        = "#{current_supplier.name}：様"
     = render "layouts/flash"
     = yield
+    = render "home/footer"
