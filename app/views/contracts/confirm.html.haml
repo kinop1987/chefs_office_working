@@ -8,14 +8,12 @@
             %th.text-primary.text-right 取引先：
             %th.text-success= @supplier.name      
       .col
-        = form_with model:[@order, @contract], url: "/orders/#{@order.id}/contracts/#{@supplier.id}", local:true do |form|
+        = form_with model:@contract, url: create_contract_path(@supplier), local:true do |form|
           = form.hidden_field :supplier_id, value: @supplier.id
           = form.hidden_field :order_id, value: current_order.id
           .col.text-right.mt-2
             = form.label :delivery_date, class: "text-primary "
             = form.date_field :delivery_date, value: @contract.delivery_date, readonly:true
-          .col-12
-            = render partial: 'layouts/error_form', locals: { model: f.object }
           %table.table.table-bordered.m-1
             %thread
               %tr
@@ -28,6 +26,7 @@
             %tbody
               - @contract_details.each do |contract_detail| 
                 = fields_for "contract_details[]", contract_detail, index: nil  do |f|
+                  = render partial: 'layouts/error_form', locals: { model: f.object }
                   %tr
                     %td.text-center.text-primary
                       = contract_detail.product_name
@@ -46,13 +45,13 @@
                       = f.hidden_field :quantity, value: contract_detail.quantity
                       = f.hidden_field :product_unit, value: contract_detail.product_unit
                       = f.hidden_field :order_id, value: current_order.id
-                      = f.hidden_field :supplier_id, value: @supplier.id
+                      = f.hidden_field :supplier_id, value: contract_detail.supplier_id
           .col-10.m-2.text-primary
             = form.label :comment
             = form.text_field :comment,  class: "w-100 ", value: @contract.comment, readonly: true
           .col.text-right
             = form.submit "注文確定",class: "btn btn-info "
-            = link_to "戻る", "/orders/#{@order.id}/contracts/new/#{@supplier.id}", class:"btn btn-danger"
+            = link_to "戻る", :back, class:"btn btn-danger"
           %table.table.m-2
             %tr{ style: "font-size: 20px"}
               %th.text-primary.text-right 合計金額：

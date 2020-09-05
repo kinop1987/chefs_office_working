@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_103108) do
+ActiveRecord::Schema.define(version: 2020_09_05_013724) do
 
   create_table "contract_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "unit_price"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_103108) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "comment"
-    t.boolean "confirm", default: false, null: false
+    t.integer "confirm", default: 0, null: false
     t.index ["order_id"], name: "index_vouchers_on_order_id"
     t.index ["supplier_id"], name: "index_vouchers_on_supplier_id"
   end

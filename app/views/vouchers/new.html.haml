@@ -1,0 +1,50 @@
+.container
+  .row
+    .col
+      .col
+        %table.table
+          %tr
+            %th.text-primary.text-right 取引先：
+            %th.text-success.text-left=@contract.order.name
+      .col
+        = form_with model:@voucher , url: confirm_voucher_path(@contract), local: true do |form|
+          = form.hidden_field :supplier_id, value: current_supplier.id
+          = form.hidden_field :order_id, value: @contract.order_id
+          .col.text-right
+            = form.label :delivery_date, class: "text-primary "
+            = form.date_field :delivery_date, id: "deliveryDate"
+          %table.table.table-bordered.m-1
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位 
+                %th.text-center.text-primary 配達日  
+            %tbody#addTbody
+              - @voucher_details.each do |voucher_detail| 
+                = fields_for "voucher_details[]", voucher_detail, index: nil  do |f|
+                  = render 'layouts/error_form', model: f.object 
+                  - @contract_details.each do |contract_detail|
+                    %tr.addForm
+                      %td.text-center.text-primary.w-25
+                        =  f.text_field :product_name, value: contract_detail.product_name, class: "form-control"
+                      %td.text-center.text-primary
+                        = f.text_field :unit_price, value: contract_detail.unit_price, class: "form-control"
+                      %td.text-center.text-primary
+                        = f.text_field :quantity, class: "form-control", value: contract_detail.quantity
+                      %td.text-center.text-primary.w-25
+                        = f.text_field :product_unit, value: contract_detail.product_unit, class: "form-control"
+                      %td.text-center.text-primary
+                        = f.date_field :delivery_date, class: "deliveryDate"
+                      %td.text-center.text-danger#removeTable 削除
+                      = f.hidden_field :order_id, value: contract_detail.order_id
+                      = f.hidden_field :supplier_id, value: contract_detail.supplier_id
+          .col-10.m-2.text-success#addTable
+            伝票欄の追加
+          .col-10.m-2.text-primary
+            = form.label :comment
+            = form.text_field :comment, placeholder: "200文字以内", class: "w-75 "
+          .col.text-right
+            = form.submit "確認",class: "btn btn-info confirm"
+            = link_to "戻る", :back, class: "btn btn-danger"

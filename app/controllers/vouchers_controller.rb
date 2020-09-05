@@ -1,10 +1,14 @@
 class VouchersController < ApplicationController
   before_action :create_params_vouchers, only: [:create,:confirm]
-  before_action :set_up_order, only: [:new,:create,:confirm]
-  before_action :set_up_supplier, only: [:index, :new, :create, :show, :confirm, :group]
+  before_action :set_up_contract, only: [:new,:create,:confirm]
+ 
 
-  def index
-    @suppliers = Supplier.all
+  def orders_voucher
+    @vouchers = current_order.vouchers.where(confirm: 1).order("delivery_date DESC") 
+  end
+
+  def receipt
+    @vouchers = current_order.vouchers.where(confirm: 0).order("delivery_date DESC")
   end
 
   def new
@@ -15,22 +19,32 @@ class VouchersController < ApplicationController
 
   def create
     if @voucher.save
-      redirect_to supplier_vouchers_path(@supplier), success: "伝票を作成しました"
+      redirect_to vouchers_path(current_supplier), success: "伝票を作成しました"
     else
       flash.now[:alert] = "伝票作成に失敗しました"
-      render "/supplier/#{@supplier.id}/vouchers/#{@order.id}/new"
+      render :new
     end
-  end
-    
-
-  def confirm
-    
   end
 
   def show
-    @voucher = Voucher.find(params[:id])
+    @voucher = Voucher.find(params[:voucher_id])
   end
 
+  def update
+    @voucher = Voucher.find(params[:voucher_id])
+    @voucher.update(confirm: 1)
+    redirect_to receipt_voucher_path, success: "伝票を受領しました"
+  end
+
+  def confirm
+    if @voucher_details.valid?
+      flash.now[:alert] = "伝票内容が正しくありません"
+      render :new
+    end
+
+  end
+
+  
   def group
     @vouchers = @suppler.vouchers.where(delivery_date: params[:delivery_date])
     @count = @vouchers.count
@@ -45,28 +59,26 @@ class VouchersController < ApplicationController
                               :supplier_id,
                               :total_price,
                               :delivery_date,
-                              :comment,
-                              :confirm)
+                              :comment).merge(confirm: 0)
   end
 
   def voucher_details_params
     params.require(:voucher_details).map do |param|
       ActionController::Parameters.new(param.to_unsafe_h).permit(:unit_price, :quantity, :product_name, :total_price, :order_id, :supplier_id, :delivery_date, :product_unit)
     end
+  rescue => e
+    redirect_to action: :new   and return 
   end
 
 
   def create_params_vouchers
-    @voucher = Contract.new(contract_params)
+    @voucher = Voucher.new(voucher_params)
     @voucher_details = @voucher.voucher_details.new(voucher_details_params)
   end
 
-  def set_up_order
-    @order = Order.find(params[:order_id])
-    @contrcts = @order.contracts
+  def set_up_contract
+    @contract = Contract.find(params[:contract_id])
+    @contract_details = @contract.contract_details
   end
 
-  def set_up_supplier
-    @supplier = Supplier.find(params[:supplier_id])
-  end
 end

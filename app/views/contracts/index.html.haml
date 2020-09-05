@@ -6,5 +6,5 @@
           %h2 取引先一覧
         .col
         - @suppliers.each do |supplier|
-          %h4.text-center= link_to supplier.name, "/orders/#{@order.id}/contracts/new/#{supplier.id}"
+          %h4.text-center= link_to supplier.name, new_contract_path(supplier)
   

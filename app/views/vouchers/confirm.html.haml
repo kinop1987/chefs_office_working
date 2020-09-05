@@ -1,0 +1,60 @@
+.container
+  .row
+    .col
+      .col.border.border-primary.mt-3
+        %h3.text-center.text-primary 伝票確認画面
+        %table.table
+          %tr.text-right
+            %th.text-primary.text-right 取引先：
+            %th.text-success= @contract.order.name     
+      .col
+        = form_with model:@voucher, url: create_voucher_path(@contract), local:true do |form|
+          = form.hidden_field :supplier_id, value: @voucher.supplier_id
+          = form.hidden_field :order_id, value: @voucher.order_id
+          .col.text-right.mt-2
+            = form.label :delivery_date, class: "text-primary "
+            = form.date_field :delivery_date, value: @voucher.delivery_date, readonly:true
+          
+          %table.table.table-bordered.m-1
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位 
+                %th.text-center.text-primary 小計（円）
+                %th.text-center.text-primary 配達日
+            %tbody
+              - @voucher_details.each do |voucher_detail| 
+                = fields_for "voucher_details[]", voucher_detail, index: nil  do |f|
+                  = render 'layouts/error_form', model: f.object 
+                  %tr
+                    %td.text-center.text-primary
+                      = voucher_detail.product_name
+                    %td.text-center.text-primary
+                      = voucher_detail.unit_price
+                    %td.text-center.text-primary.quantity
+                      = voucher_detail.quantity
+                    %td.text-center.text-primary
+                      = voucher_detail.product_unit
+                    %td.text-center.text-primary
+                      = "#{voucher_detail.calculate_voucher_detail_total_price}円"
+                    %td.text-center.text-primary
+                      = f.date_field :delivery_date, value: voucher_detail.delivery_date, readonly: true
+                      = f.hidden_field :product_name, value: voucher_detail.product_name
+                      = f.hidden_field :unit_price, value: voucher_detail.unit_price
+                      = f.hidden_field :quantity, value: voucher_detail.quantity
+                      = f.hidden_field :product_unit, value: voucher_detail.product_unit
+                      = f.hidden_field :supplier_id, value: current_supplier.id
+                      = f.hidden_field :order_id, value: voucher_detail.order_id
+          .col-10.m-2.text-primary
+            = form.label :comment
+            = form.text_field :comment,  class: "w-100 ", value: @voucher.comment, readonly: true
+          .col.text-right
+            = form.submit "伝票作成",class: "btn btn-info "
+            = link_to "戻る", :back, class:"btn btn-danger"
+          %table.table.m-2
+            %tr{ style: "font-size: 20px"}
+              %th.text-primary.text-right 合計金額：
+              %th.text-primary
+                = "#{@voucher.calculate_voucher_total_price}円" 
