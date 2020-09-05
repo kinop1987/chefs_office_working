@@ -44,7 +44,7 @@
                         = f.hidden_field :supplier_id, value: @supplier.id
           .col-10.m-2.text-primary.commentPlace
             = form.label :comment
-            = form.text_field :comment, placeholder: "200文字以内", class: "w-75 ", id: "comment"
+            = form.text_field :comment, placeholder: "200文字以内", class: "w-100", id: "comment"
           .col.text-right
             = form.submit "確認",class: "btn btn-info confirm"
             = link_to "戻る", :back, class: "btn btn-danger"

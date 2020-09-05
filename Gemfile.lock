@@ -129,6 +129,7 @@ GEM
     minitest (5.14.1)
     msgpack (1.3.3)
     mysql2 (0.5.3)
+    news-api-ruby-rails (0.0.2)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -270,6 +271,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.2)
   mysql2 (>= 0.4.4)
+  news-api-ruby-rails (~> 0.0.2)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
