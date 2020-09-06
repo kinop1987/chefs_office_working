@@ -4,11 +4,11 @@ class VouchersController < ApplicationController
  
 
   def orders_voucher
-    @vouchers = current_order.vouchers.where(confirm: 1).order("delivery_date DESC") 
+    @vouchers = current_order.vouchers.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
   end
 
   def receipt
-    @vouchers = current_order.vouchers.where(confirm: 0).order("delivery_date DESC")
+    @vouchers = current_order.vouchers.where(confirm: 0).order("delivery_date DESC").page(params[:page]).per(4)
   end
 
   def new

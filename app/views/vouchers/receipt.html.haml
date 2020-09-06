@@ -1,6 +1,8 @@
 .container.h-75.overflow-auto
   .row
     .col-10.mx-auto
+      = paginate @vouchers, class: "text-primary "
+    .col-10.mx-auto
       - @vouchers.each do |voucher|
         .col.border.border-info{ style: "height: 20%; overflow-y: auto;"}
           = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
