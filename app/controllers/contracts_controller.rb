@@ -7,7 +7,11 @@ class ContractsController < ApplicationController
   end
 
   def suppliers_contract
-    @contracts = current_supplier.contracts.page(params[:page]).per(4)
+    @contracts = current_supplier.contracts.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
+  end
+
+  def check
+    @contracts = current_supplier.contracts.where(confirm: 0).page(params[:page]).per(4)
   end
 
   def new
@@ -47,7 +51,7 @@ class ContractsController < ApplicationController
                               :supplier_id,
                               :total_price,
                               :delivery_date,
-                              :comment)
+                              :comment).merge(confirm: 0)
   end
 
   def contract_details_params

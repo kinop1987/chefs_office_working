@@ -1,0 +1,39 @@
+.container
+  .row
+    .col-10.mx-auto
+      = paginate @contracts, class: "text-primary "
+    .col-10.mx-auto
+      - @contracts.each do |contract|
+        .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
+          .col.d-flex.justify-content-between
+            %p.text-primary.mr-2= "取引先：#{contract.order.name}"
+            %p.text-primary.mr-2= "配達希望日：#{contract.delivery_date}"
+            %p.text-primary= "合計金額：#{contract.total_price}円"
+          .col.text-right.mb-2
+            = link_to "詳細", show_contract_path(contract), class: "btn btn-success text-white "
+          %table.table.table-bordered
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位
+                %th.text-center.text-primary 小計 （円）
+            %tbody
+            - contract.contract_details.each do |contract_detail| 
+              %tr
+                %td.text-center.text-primary
+                  = contract_detail.product_name
+                %td.text-center.text-primary
+                  = contract_detail.unit_price
+                %td.text-center.text-primary
+                  = contract_detail.quantity
+                %td.text-center.text-primary
+                  = contract_detail.product_unit
+                %th.text-center.text-primary
+                  = contract_detail.total_price
+          .col
+            %p.text-primary= contract.comment
+    -if @contracts.count == 0
+      .col-8.mx-auto
+        %h4.text-danger.text-center 新規の注文はありません
