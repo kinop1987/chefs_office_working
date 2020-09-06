@@ -5,6 +5,7 @@ class Contract < ApplicationRecord
   with_options presence: true do
     validates :total_price
     validates :delivery_date
+    validates :confirm
   end
   validates :comment,     length: {maximum: 200}
   validate  :date_not_before_today

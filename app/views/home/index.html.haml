@@ -3,6 +3,9 @@
     -if order_signed_in?
       .col
         = render "order"
+    -elsif supplier_signed_in?
+      .col
+        = render "supplier"
     -else
       .col
         .jumbotron.border.border-primary{ style: "margin: 2%"}

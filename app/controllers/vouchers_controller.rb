@@ -7,6 +7,10 @@ class VouchersController < ApplicationController
     @vouchers = current_order.vouchers.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
   end
 
+  def suppliers_voucher
+    @vouchers = current_supplier.vouchers.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
+  end
+
   def receipt
     @vouchers = current_order.vouchers.where(confirm: 0).order("delivery_date DESC").page(params[:page]).per(4)
   end
@@ -19,6 +23,7 @@ class VouchersController < ApplicationController
 
   def create
     if @voucher.save
+      @contract.update(confirm: 1)
       redirect_to vouchers_path(current_supplier), success: "伝票を作成しました"
     else
       flash.now[:alert] = "伝票作成に失敗しました"

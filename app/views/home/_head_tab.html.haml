@@ -1,36 +1,36 @@
-%header
-  .container-fluid
-    .row.d-flex
-      .col.border.border-primary.text-center.pt-2= link_to 'トップ', root_path
-      - if order_signed_in? 
-        .col.border.border-primary.text-center.pt-2= link_to '発注', contracts_path
-        .col.border.border-primary.text-center.pt-2= link_to '発注メモ', memos_path
-        .col.border.border-primary.btn-group
-          %button.btn.dropdown-toggle.mx-auto.text-primary.bg-white{ type: "button", 
-                                                  data: { toggle: "dropdown"},
-                                                  aria: { haspopup: "true",
-                                                          expanded: "false"}} 伝票管理
-          .dropdown-menu
-            = link_to "伝票一覧", orders_voucher_path, class: "dropdown-item text-primary "
-            = link_to "受領画面", receipt_voucher_path, class: "dropdown-item text-primary "
-        //.col.border.border-primary.text-center= link_to '取引先', suppliers_path
-        //.col.border.border-primary.text-center= link_to '原価計算', calculations_path
-        //.col.border.border-primary.text-center= link_to 'カレンダー', calendars_path
-        .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_order_session_path, method: :delete
-      - elsif supplier_signed_in? 
-        .col.border.border-primary.text-center.pt-2= link_to '商品登録', products_path
-        .col.border.border-primary.btn-group
-          %button.btn.dropdown-toggle.mx-auto.text-primary.bg-white{ type: "button", 
-                                                  data: { toggle: "dropdown"},
-                                                  aria: { haspopup: "true",
-                                                          expanded: "false"}} 注文管理
-          .dropdown-menu
-            = link_to "新規注文", suppliers_contract_path, class: "dropdown-item text-primary "
-            = link_to "伝票一覧", receipt_voucher_path, class: "dropdown-item text-primary "
-        .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_supplier_session_path, method: :delete
-      - else
-        .col.border.border-primary.text-center.pt-2= link_to '店舗の皆様', new_order_session_path
-        .col.border.border-primary.text-center.pt-2= link_to "新規登録", new_order_registration_path
-        .col.border.border-primary.text-center.pt-2= link_to "企業の皆様", new_supplier_session_path
+.container-fluid
+  .row.d-flex
+    .col.border.border-primary.text-center.pt-2= link_to 'トップ', root_path
+    - if order_signed_in? 
+      .col.border.border-primary.text-center.pt-2= link_to '発注', contracts_path
+      .col.border.border-primary.text-center.pt-2= link_to '発注メモ', memos_path
+      .col.border.border-primary.btn-group
+        %button.btn.dropdown-toggle.mx-auto.text-primary.bg-white{ type: "button", 
+                                                data: { toggle: "dropdown"},
+                                                aria: { haspopup: "true",
+                                                        expanded: "false"}} 伝票管理
+        .dropdown-menu
+          = link_to "伝票一覧", orders_voucher_path, class: "dropdown-item text-primary "
+          = link_to "受領画面", receipt_voucher_path, class: "dropdown-item text-primary "
+      //.col.border.border-primary.text-center= link_to '取引先', suppliers_path
+      //.col.border.border-primary.text-center= link_to '原価計算', calculations_path
+      //.col.border.border-primary.text-center= link_to 'カレンダー', calendars_path
+      .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_order_session_path, method: :delete
+    - elsif supplier_signed_in? 
+      .col.border.border-primary.text-center.pt-2= link_to '商品登録', products_path
+      .col.border.border-primary.btn-group
+        %button.btn.dropdown-toggle.mx-auto.text-primary.bg-white{ type: "button", 
+                                                data: { toggle: "dropdown"},
+                                                aria: { haspopup: "true",
+                                                        expanded: "false"}} 注文管理
+        .dropdown-menu
+          = link_to "注文確認", check_contract_path, class: "dropdown-item text-primary "
+          = link_to "過去の注文", suppliers_contract_path, class: "dropdown-item text-primary "
+          = link_to "伝票一覧", suppliers_voucher_path, class: "dropdown-item text-primary "
+      .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_supplier_session_path, method: :delete
+    - else
+      .col.border.border-primary.text-center.pt-2= link_to '店舗の皆様', new_order_session_path
+      .col.border.border-primary.text-center.pt-2= link_to "新規登録", new_order_registration_path
+      .col.border.border-primary.text-center.pt-2= link_to "企業の皆様", new_supplier_session_path
       
  
