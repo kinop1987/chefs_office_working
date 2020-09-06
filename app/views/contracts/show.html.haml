@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-8.mx-auto
+      %table.table
+        %tread
+          %tr
+            %th.text-center.text-primary 取引先
+            %th.text-center.text-primary 配達希望日
+            %th.text-center.text-primary 合計金額
+        %tbody
+          %tr
+            %th.text-center.text-primary
+              = @contract.order.name
+            %th.text-center.text-primary
+              = @contract.delivery_date
+            %th.text-center.text-primary
+              = @contract.total_price
+      %table.table.table-bordered.mt-1
+        %thread
+          %tr
+            %th.text-center.text-primary 商品名
+            %th.text-center.text-primary 単価（円）
+            %th.text-center.text-primary 数量
+            %th.text-center.text-primary 単位
+            %th.text-center.text-primary 小計 
+        %tbody
+          - @contract.contract_details.each do |contract_detail| 
+            %tr
+              %td.text-center.text-primary
+                = contract_detail.product_name
+              %td.text-center.text-primary
+                = contract_detail.unit_price
+              %td.text-center.text-primary
+                = contract_detail.quantity
+              %td.text-center.text-primary
+                = contract_detail.product_unit
+              %th.text-center.text-primary
+                = contract_detail.total_price
+      .col
+        %p= @contract.comment
+      .col.text-right.d-flex
+        = link_to "伝票作成", new_voucher_path(@contract), class: "btn btn-success mr-2"
+        = link_to "戻る", :back , class: "btn btn-danger"

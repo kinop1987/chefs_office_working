@@ -6,6 +6,10 @@ class ContractsController < ApplicationController
     @suppliers = Supplier.all
   end
 
+  def suppliers_contract
+    @contracts = current_supplier.contracts.page(params[:page]).per(4)
+  end
+
   def new
     @contract = Contract.new
     @contract.contract_details.build
@@ -26,7 +30,7 @@ class ContractsController < ApplicationController
   end
 
   def show
-    @contract = Contract.find(params[:id])
+    @contract = Contract.find(params[:contract_id])
   end
 
   def group

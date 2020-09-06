@@ -1,6 +1,8 @@
 .container
   .row
     .col-10.mx-auto
+      = paginate @vouchers, class: "text-primary "
+    .col-10.mx-auto
       - @vouchers.each do |voucher|
         .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
           .col.d-flex
