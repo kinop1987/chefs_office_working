@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     registrations: 'suppliers/registrations'
   }
   root to: 'home#index'
+  get "home/calculation", to: "home#calculation", as: :calculation
 
   resources :memos 
   resources :products
