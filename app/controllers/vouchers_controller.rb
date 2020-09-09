@@ -55,6 +55,21 @@ class VouchersController < ApplicationController
     @total_price = @vouchers.sum(:total_price)
   end
 
+  def aggregation
+    start_date = Date.current.beginning_of_month
+    end_date = Date.current.end_of_month
+    month = (start_date..end_date)
+    page = []
+    month.each do |date|
+      page << date
+    end
+    @date = Kaminari.paginate_array(page).page(params[:page]).per(7)
+    
+    @total_price = current_order.vouchers.where(delivery_date: start_date..end_date).sum(:total_price)
+    @daily_sum = current_order.vouchers
+    @suppliers = Supplier.all
+  end
+
 
   private
 

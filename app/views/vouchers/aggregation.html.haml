@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-12
+      %h4.text-center.text-info= "#{Date.current.year}年#{Date.current.month}月の取引金額"
+    .col-12.mx-auto
+      = paginate @date, class: "text-primary mx-auto"
+    .col-12
+      %h4.text-right.text-danger= "総計：#{@total_price}円"
+    .col-8.mx-auto
+      %table.table.table-bordered.mt-1
+        %thread
+          %tr
+            %th
+            -@date.each do |date|
+              %th.text-center.text-primary= "#{date.day}日"
+            %th.text-center.text-danger 月間合計
+          %tbody
+            %tr
+              %td 日別集計
+              -@date.each do |date|
+                %td.text-center.dailySum= @daily_sum.where(delivery_date: date).sum(:total_price)
+              %td.text-right= @daily_sum.where('extract(month from delivery_date) = ?', Date.current.month).sum(:total_price)
+            - @suppliers.each do |supplier|
+              %tr
+                %td= supplier.name
+                -@date.each do |date|
+                  %td.text-center.dailySum= @daily_sum.where(delivery_date: date, supplier_id: supplier.id).sum(:total_price)
+                %td.text-right= @daily_sum.where('extract(month from delivery_date) = ?', Date.current.month).where(supplier_id: supplier.id).sum(:total_price)
+              
+
+

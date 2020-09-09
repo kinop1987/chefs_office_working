@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get "vouchers/receipt", to: "vouchers#receipt", as: :receipt_voucher
   post "vouchers/:voucher_id/show", to: "vouchers#show", as: :show_receipt
   post "vouchers/:voucher_id/update", to: "vouchers#update", as: :update_voucher
+  get "vouchers/aggregation", to: "vouchers#aggregation", as: :aggregation
 
 
 end
