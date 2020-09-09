@@ -14,7 +14,7 @@
           = link_to "受領画面", receipt_voucher_path, class: "dropdown-item text-primary "
       //.col.border.border-primary.text-center= link_to '取引先', suppliers_path
       .col.border.border-primary.text-center.pt-2= link_to '原価計算', calculation_path
-      //.col.border.border-primary.text-center= link_to 'カレンダー', calendars_path
+      .col.border.border-primary.text-center.pt-2= link_to '取引カレンダー', calendar_path
       .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_order_session_path, method: :delete
     - elsif supplier_signed_in? 
       .col.border.border-primary.text-center.pt-2= link_to '商品登録', products_path

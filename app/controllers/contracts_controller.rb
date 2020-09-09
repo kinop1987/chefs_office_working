@@ -38,8 +38,7 @@ class ContractsController < ApplicationController
   end
 
   def group
-    @contracts = @order.contracts.where(delivery_date: params[:delivery_date])
-    @count = @contracts.count
+    @contracts = current_order.contracts.where(delivery_date: params[:delivery_date]).page(params[:page]).per(4)
   end
 
 
