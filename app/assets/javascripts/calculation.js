@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load' , function() {
   $('#calculation').on('click', function() {
     let income = parseInt($("#income").val());
     let last_invent = parseInt($("#last_invent").val());

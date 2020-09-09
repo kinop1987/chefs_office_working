@@ -5,4 +5,7 @@ FactoryBot.define do
     product_unit         {"kg"} 
     availability        { true }
   end
+
+ 
+
 end

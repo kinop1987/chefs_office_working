@@ -56,7 +56,10 @@ class ProductsController < ApplicationController
 
     def check_collect_supplier
       if @product.supplier_id != current_supplier.id
-        redirect_to root_path , alert: "権限がありません"
+        flash.now[:alert] = "権限がありません"
+        render root_path
       end
     end
+
+    
 end
