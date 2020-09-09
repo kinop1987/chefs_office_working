@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
   get "home/calculation", to: "home#calculation", as: :calculation
+  get "home/calendar", to: "home#calendar", as: :calendar
+  
 
   resources :memos 
   resources :products
@@ -35,5 +37,6 @@ Rails.application.routes.draw do
   get "vouchers/receipt", to: "vouchers#receipt", as: :receipt_voucher
   post "vouchers/:voucher_id/show", to: "vouchers#show", as: :show_receipt
   post "vouchers/:voucher_id/update", to: "vouchers#update", as: :update_voucher
+
 
 end

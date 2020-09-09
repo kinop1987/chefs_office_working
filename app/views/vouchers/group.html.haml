@@ -2,6 +2,10 @@
   .row
     .col-10.mx-auto
       = paginate @vouchers, class: "text-primary "
+    .col-10.mx-auto.mb-2.text-right
+      %span.text-primary 総計：
+      %span.text-danger= @total_price
+      %span.text-primary 円
     .col-10.mx-auto
       - @vouchers.each do |voucher|
         .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
@@ -10,7 +14,6 @@
               %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
               %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
               %p.text-primary= "合計金額：#{voucher.total_price}円"
-              %button.btn.btn-success.text-right= f.submit "受領画面"
             %table.table.table-bordered.mt-1
               %thread
                 %tr
@@ -36,4 +39,4 @@
               = voucher.comment
     -if @vouchers.count == 0
       .col-8.mx-auto
-        %h4.text-danger.text-center 未受領の伝票はありません
+        %h4.text-danger.text-center この日の伝票はありません

@@ -51,8 +51,8 @@ class VouchersController < ApplicationController
 
   
   def group
-    @vouchers = @suppler.vouchers.where(delivery_date: params[:delivery_date])
-    @count = @vouchers.count
+    @vouchers = current_order.vouchers.where(delivery_date: params[:delivery_date]).page(params[:page]).per(4)
+    @total_price = @vouchers.sum(:total_price)
   end
 
 

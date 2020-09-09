@@ -34,5 +34,10 @@ class HomeController < ApplicationController
       @total_vouchers = current_order.vouchers.where(confirm: 1)
       @this_month_receipts = @total_vouchers.where('extract(month from delivery_date) = ?', now_month ).sum(:total_price)
   end
+
+  def calendar
+    @contracts = current_order.contracts
+    @vouchers = current_order.vouchers
+  end
       
 end
