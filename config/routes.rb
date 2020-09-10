@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :memos 
   resources :products
+  resources :cookings
   
   get "contracts/:supplier_id/new", to: "contracts#new", as: :new_contract
   post "contracts/:supplier_id", to: "contracts#create" , as: :create_contract

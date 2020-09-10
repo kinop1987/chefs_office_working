@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_102835) do
+ActiveRecord::Schema.define(version: 2020_09_10_022503) do
 
   create_table "contract_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "unit_price"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 2020_09_06_102835) do
     t.integer "confirm", null: false
     t.index ["order_id"], name: "index_contracts_on_order_id"
     t.index ["supplier_id"], name: "index_contracts_on_supplier_id"
+  end
+
+  create_table "cookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "text", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_cookings_on_order_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "cooking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cooking_id"], name: "index_images_on_cooking_id"
   end
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -127,6 +144,8 @@ ActiveRecord::Schema.define(version: 2020_09_06_102835) do
   add_foreign_key "contract_details", "suppliers"
   add_foreign_key "contracts", "orders"
   add_foreign_key "contracts", "suppliers"
+  add_foreign_key "cookings", "orders"
+  add_foreign_key "images", "cookings"
   add_foreign_key "memos", "orders"
   add_foreign_key "products", "suppliers"
   add_foreign_key "voucher_details", "orders"
