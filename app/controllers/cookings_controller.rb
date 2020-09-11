@@ -1,9 +1,11 @@
 class CookingsController < ApplicationController
   before_action :authenticate_order!
+  before_action :set_up_cooking, only: [:show, :edit, :uidate, :destroy]
   before_action :check_collect_order, only: [:show, :edit, :update, :detroy]
+  
 
   def index
-    @cookings = current_order.cookings.order("created_at DESC").page(params[:page]).per(5)
+    @cookings = current_order.cookings.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def new
@@ -22,6 +24,9 @@ class CookingsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
     def cooking_params
       params.require(:cooking).permit(:name, :text, images_attributes: [:name]).merge(order_id: current_order.id)
@@ -32,6 +37,10 @@ class CookingsController < ApplicationController
         flash.now[:alert] = "権限がありません"
         render root_path
       end
+    end
+    
+    def set_up_cooking
+      @cooking = Cooking.find(params[:id])
     end
 
 
