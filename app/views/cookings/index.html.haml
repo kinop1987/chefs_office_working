@@ -3,6 +3,8 @@
     .col-10.mb-3.mx-auto
       .col-6.border.border-primary.mx-auto
         %h4.text-center.text-primary 投稿レシピ一覧
+      .col-6.mx-auto.text-right.mt-1
+        = link_to "投稿する", new_cooking_path, class: "btn btn-primary"
     .col-10.mx-auto
       = paginate @cookings, class: "text-primary text-center"
     .col

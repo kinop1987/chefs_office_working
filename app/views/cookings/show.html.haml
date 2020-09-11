@@ -4,7 +4,7 @@
       %h4.text-primary.text-center レシピ詳細
     .col-8.mx-auto.mb-2.text-right
       = link_to "編集する", edit_cooking_path(@cooking), class: "btn btn-primary "
-      = link_to "削除する", cooking_path(@cooking), method: :delete, class: "btn btn-danger "
+      = link_to "削除する", cooking_path(@cooking), method: :delete, class: "btn btn-danger ", data: { confirm: "削除しますか？" }
       = link_to "戻る", :back, class: "btn btn-info "
     .col-8.mx-auto.border.border-primary{ style: "height: 750px; overflow-y: auto;"}
       .col-10.mx-auto.border.border-success.mt-3{ style: "height: 350px"}

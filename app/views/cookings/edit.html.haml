@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-8.mx-auto.border.border-primary.mb-3
+      %h4.text-primary.text-center レシピ編集
+    .col-8.mx-auto.border.border-primary{ style: "height: 800px; overflow-y: auto;"}
+      = form_with model: @cooking, local: true do |form|
+        = render "layouts/error_form", model: form.object
+        .col-10.mt-1.text-right
+          = form.submit "編集する", class: "btn btn-primary"
+        .col-10.mx-auto.border.border-success.mt-3#imageBoxEdit{ style: "height: 250px; "}
+          .col
+            .col-12
+              %h4.text-primary 画像（最大５枚まで）
+              .d-flex#imagePlaceEdit{ style: "height: 150px; "}
+                - @cooking.images.each_with_index do |image, i|
+                  .imageGroupEdit.mr-2{ data: { index: i}}
+                    = image_tag image.name.url, data: { index: i }, size: "100x100"
+                    .editRemove.text-danger 削除
+            = form.fields_for :images  do |f|
+              .fileGroupEdit{"data-index" => "#{f.index}"}
+                = f.file_field :name, class: 'imageFileEdit text-white ', style: "display: none"
+                = f.check_box :_destroy, data:{ index: f.index}, style: "display: none", class: "hidden-destroy"
+            .editUpload.text-center
+              .btn.btn-success.editImageBtn 投稿
+        .col-10.mx-auto.border.border-info.mt-3{ style: "height: 500px"}
+          .col.mt-3
+            .col-12
+              %h4.text-primary タイトル
+            = form.text_field :name, class: "w-100 "
+          .col.mt-3
+            .col-12
+              %h4.text-primary レシピ
+            = form.text_area :text, class: "w-100 ", style: "height: 350px "

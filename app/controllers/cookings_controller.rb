@@ -1,6 +1,6 @@
 class CookingsController < ApplicationController
   before_action :authenticate_order!
-  before_action :set_up_cooking, only: [:show, :edit, :uidate, :destroy]
+  before_action :set_up_cooking, only: [:show, :edit, :update, :destroy]
   before_action :check_collect_order, only: [:show, :edit, :update, :detroy]
   
 
@@ -27,6 +27,23 @@ class CookingsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if params[:cooking][:images_attributes] && @cooking.update(edit_cooking_params)
+      redirect_to cookings_path, notice: "レシピを編集しました"
+    else
+      flas.now[:alert] = "編集に失敗しました"
+      render :edit
+    end
+  end
+
+  def destroy
+    @cooking.destroy
+    redirect_to cookings_path, notice: "レシピを削除しました"
+  end
+
   private
     def cooking_params
       params.require(:cooking).permit(:name, :text, images_attributes: [:name]).merge(order_id: current_order.id)
@@ -41,6 +58,10 @@ class CookingsController < ApplicationController
     
     def set_up_cooking
       @cooking = Cooking.find(params[:id])
+    end
+
+    def edit_cooking_params
+      params.require(:cooking).permit(:name, :text, images_attributes: [:name, :_destroy, :id])
     end
 
 
