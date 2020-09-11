@@ -1,0 +1,39 @@
+.container
+  .row
+    .col-10.mx-auto.mb-2
+      %h4.text-center.text-primary= link_to "伝票一覧", orders_voucher_path
+    .col-10.mx-auto.text-right.mb-2
+      = search_form_for @search, url: search_vouchers_path do |search| 
+        = search.label :supplier_id_eq, '取引先'
+        = search.collection_select :supplier_id_eq, @suppliers, :id, :name, { include_blank: "---", selected:"" }
+        = search.submit "検索"
+    .col-10.mx-auto
+      = paginate results, class: "text-primary "
+    .col-10.mx-auto
+      - results.each do |voucher|
+        .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
+          .col.d-flex
+            %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
+            %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
+            %p.text-primary= "合計金額：#{voucher.total_price}円"
+          %table.table.table-bordered
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位
+                %th.text-center.text-primary 小計 （円）
+            %tbody
+            - voucher.voucher_details.each do |voucher_detail| 
+              %tr
+                %td.text-center.text-primary
+                  = voucher_detail.product_name
+                %td.text-center.text-primary
+                  = voucher_detail.unit_price
+                %td.text-center.text-primary
+                  = voucher_detail.quantity
+                %td.text-center.text-primary
+                  = voucher_detail.product_unit
+                %th.text-center.text-primary
+                  = voucher_detail.total_price

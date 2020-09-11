@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
   resources :memos 
   resources :products
-  resources :cookings
+  resources :cookings do
+    collection do
+      get 'search'
+    end
+  end
   
   get "contracts/:supplier_id/new", to: "contracts#new", as: :new_contract
   post "contracts/:supplier_id", to: "contracts#create" , as: :create_contract
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
   post "vouchers/:voucher_id/show", to: "vouchers#show", as: :show_receipt
   post "vouchers/:voucher_id/update", to: "vouchers#update", as: :update_voucher
   get "vouchers/aggregation", to: "vouchers#aggregation", as: :aggregation
+  get "vouchers/search", to: "vouchers#search", as: :search_vouchers
 
 
 end

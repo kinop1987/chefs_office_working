@@ -1,0 +1,39 @@
+.container_fluid
+  .row
+    .col-10.mb-3.mx-auto
+      .col-10.border.border-primary.mx-auto
+        %h4.text-center.text-primary= link_to "投稿レシピ一覧", cookings_path
+      .col-10.mx-auto.text-right.mt-1
+        = search_form_for @search, url: search_cookings_path do |search| 
+          = search.search_field :name_cont , placeholder: "タイトル検索"
+          = search.submit "検索"
+      .col-10.mx-auto.text-center.mt-1
+        = link_to "投稿する", new_cooking_path, class: "btn btn-primary"
+    .col-10.mx-auto
+      = paginate results, class: "text-primary text-center"
+    .col-12.mx-auto
+      .col-10.m-1.d-flex.mx-auto
+        - results.each_with_index do |cooking, i|
+          - if i <= 4
+            .border.border-info.m-1{ style: "widht: 250px"}
+              .col-12.mt-2
+                = image_tag cooking.images[0].name.url, alt: "エラー", size: "200x200"
+              .col-12
+                %h6.text-primary.text-center= cooking.name
+                %p= cooking.text.truncate(10)
+                .col-12.m-2
+                  = link_to "レシピ詳細", cooking_path(cooking), class: "btn btn-primary "
+      .col-10.m-1.d-flex.mx-auto
+        - results.each_with_index do |cooking, i|
+          - if i > 4
+            .border.border-info.m-1{ style: "widht: 250px"}
+              .col-12.mt-2
+                = image_tag cooking.images[0].name.url, alt: "エラー", size: "200x200"
+              .col-12
+                %h6.text-primary.text-center= cooking.name
+                %p= cooking.text.truncate(10)
+                .col-12.m-2
+                  = link_to "レシピ詳細", cooking_path(cooking), class: "btn btn-primary "
+    - if results.count == 0
+      .col-12.mx-auto
+        %h4.text-center.text-danger 投稿はありません
