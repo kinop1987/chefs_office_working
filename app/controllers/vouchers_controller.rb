@@ -1,10 +1,15 @@
 class VouchersController < ApplicationController
   before_action :create_params_vouchers, only: [:create,:confirm]
   before_action :set_up_contract, only: [:new,:create,:confirm]
+  before_action :search_vouchers, only: [:orders_voucher, :search]
  
 
   def orders_voucher
     @vouchers = current_order.vouchers.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
+  end
+
+  def search
+    @results = @search.result(distinct: true).order("delivery_date DESC").page(params[:page]).per(4)
   end
 
   def suppliers_voucher
@@ -99,6 +104,11 @@ class VouchersController < ApplicationController
   def set_up_contract
     @contract = Contract.find(params[:contract_id])
     @contract_details = @contract.contract_details
+  end
+
+  def search_vouchers
+    @search = current_order.vouchers.where(confirm: 1).ransack(params[:q])
+    @suppliers = Supplier.all
   end
 
 end

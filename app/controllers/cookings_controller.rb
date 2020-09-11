@@ -2,10 +2,15 @@ class CookingsController < ApplicationController
   before_action :authenticate_order!
   before_action :set_up_cooking, only: [:show, :edit, :update, :destroy]
   before_action :check_collect_order, only: [:show, :edit, :update, :detroy]
+  before_action :search_cookings, only: [:index, :search]
   
 
   def index
     @cookings = current_order.cookings.order("created_at DESC").page(params[:page]).per(10)
+  end
+
+  def search
+    @results = @search.result(distinct: true).page(params[:page]).per(10)
   end
   
   def new
@@ -63,6 +68,11 @@ class CookingsController < ApplicationController
     def edit_cooking_params
       params.require(:cooking).permit(:name, :text, images_attributes: [:name, :_destroy, :id])
     end
+
+    def search_cookings
+      @search = current_order.cookings.ransack(params[:q])
+    end
+
 
 
 end
