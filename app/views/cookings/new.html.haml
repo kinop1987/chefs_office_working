@@ -5,6 +5,8 @@
     .col-8.mx-auto.border.border-primary{ style: "height: 800px; overflow-y: auto;"}
       = form_with model: @cooking, local: true do |form|
         = render "layouts/error_form", model: form.object
+        .col-10.mt-1.text-right
+          = form.submit "投稿する", class: "btn btn-primary text-right"
         .col-10.mx-auto.border.border-success.mt-3#imageBox{ style: "height: 250px"}
           .col
             .col-12
@@ -22,5 +24,3 @@
             .col-12
               %h4.text-primary レシピ
             = form.text_area :text, class: "w-100 ", style: "height: 350px "
-        .col-10.mx-auto.mt-3
-          = form.submit "投稿する", class: "btn btn-primary text-right"

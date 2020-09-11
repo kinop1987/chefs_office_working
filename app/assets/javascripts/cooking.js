@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
     return html;
   }
   const buildImg = (index, url)=> {
-    const html = `<div data-index="${index}" class="imageGroup" >
+    const html = `<div data-index="${index}" class="imageGroup mr-2" >
                     <img data-index="${index}" src="${url}" width="100px" height="100px">
                     <div class="imageRemove text-danger">削除</div>
                   </div>`;
@@ -42,7 +42,6 @@ $(document).on('turbolinks:load', function(){
 
   $('#imagePlace').on('click', '.imageRemove', function() {
     const targetIndex = $(this).parent().data('index');
-    console.log("おはよう")
     $(`.imageGroup[data-index="${targetIndex}"]`).remove();
     $(`.fileGroup[data-index="${targetIndex}"]`).remove();
 
