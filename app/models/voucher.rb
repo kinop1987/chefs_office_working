@@ -22,5 +22,7 @@ class Voucher < ApplicationRecord
     errors.add(:delivery_date) if delivery_date.nil? || delivery_date < Date.today
   end
 
+  
+
 
 end

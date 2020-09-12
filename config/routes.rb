@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :inventories do
+    member do
+      get 'new'
+    end
+  end
   
   get "contracts/:supplier_id/new", to: "contracts#new", as: :new_contract
   post "contracts/:supplier_id", to: "contracts#create" , as: :create_contract

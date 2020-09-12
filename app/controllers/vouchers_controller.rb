@@ -92,7 +92,7 @@ class VouchersController < ApplicationController
       ActionController::Parameters.new(param.to_unsafe_h).permit(:unit_price, :quantity, :product_name, :total_price, :order_id, :supplier_id, :delivery_date, :product_unit)
     end
   rescue => e
-    redirect_to action: :new   and return 
+    redirect_to new_voucher_path, alert: "入力内容が正しくありません" and return 
   end
 
 
