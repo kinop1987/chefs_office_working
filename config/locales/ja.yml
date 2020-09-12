@@ -48,6 +48,11 @@ ja:
         procuct_name: "商品名"
         total_price: "小計"
         delivery_date: "納品日"
+      cooking:
+        name: "タイトル"
+        text: "レシピ"
+      image:
+        name: "画像"
     models:
       order: 発注者
       supplier: 受注者
@@ -57,6 +62,8 @@ ja:
       contract_detail: 注文詳細
       voucher: 伝票
       voucher_detail: 伝票詳細
+      cooking: "レシピ"
+      image: "画像"
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
