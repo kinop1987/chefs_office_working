@@ -1,0 +1,41 @@
+.container
+  .row
+    .col
+      .col
+        %table.table
+          %tr
+            %th.text-primary.text-right 取引先：
+            %th.text-success.text-left= @supplier.name
+      .col
+        = form_with model:@inventory , local: true do |form|
+          = form.hidden_field :supplier_id, value: @supplier.id
+          = form.hidden_field :inventory_month, value: Date.current
+          .col.text-right
+            = form.submit "保存する",class: "btn btn-info confirm"
+            = link_to "戻る", :back, class: "btn btn-danger"
+          %table.table.table-bordered.m-1
+            %thread
+              %tr
+                %th.text-center.text-primary 商品名
+                %th.text-center.text-primary 単価（円）
+                %th.text-center.text-primary 数量
+                %th.text-center.text-primary 単位
+            %tbody
+              - @inventory_details.each do |inventory_detail|
+                = fields_for "inventory_details[]", inventory_detail, index: nil  do |f|
+                  - @average.each do |aggregation|
+                    %tr
+                      %td.text-center.text-primary.w-25
+                        = aggregation[0][0]
+                      %td.text-center.text-primary.w-25
+                        = aggregation[1].floor
+                      %td.text-center.text-primary.w-25
+                        = f.text_field :quantity, class: "form-control"
+                      %td.text-center.text-primary.w-25
+                        = aggregation[0][1]
+                        = f.hidden_field :inventory_day, value: Date.current
+                        = f.hidden_field :product_name, value: aggregation[0][0]
+                        = f.hidden_field :unit_price, value: aggregation[1].floor
+                        = f.hidden_field :product_unit, value: aggregation[0][1]
+                        = f.hidden_field :order_id, value: current_order.id
+          

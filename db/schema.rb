@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_022503) do
+ActiveRecord::Schema.define(version: 2020_09_12_120410) do
 
   create_table "contract_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "unit_price"
@@ -57,6 +57,32 @@ ActiveRecord::Schema.define(version: 2020_09_10_022503) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cooking_id"], name: "index_images_on_cooking_id"
+  end
+
+  create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "total_price", null: false
+    t.date "inventory_month", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "supplier_id"
+    t.index ["order_id"], name: "index_inventories_on_order_id"
+    t.index ["supplier_id"], name: "index_inventories_on_supplier_id"
+  end
+
+  create_table "inventory_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "unit_price", null: false
+    t.integer "quantity", null: false
+    t.integer "total_price", null: false
+    t.string "product_name", null: false
+    t.string "product_unit", null: false
+    t.date "inventory_day", null: false
+    t.bigint "inventory_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inventory_id"], name: "index_inventory_details_on_inventory_id"
+    t.index ["order_id"], name: "index_inventory_details_on_order_id"
   end
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -146,6 +172,9 @@ ActiveRecord::Schema.define(version: 2020_09_10_022503) do
   add_foreign_key "contracts", "suppliers"
   add_foreign_key "cookings", "orders"
   add_foreign_key "images", "cookings"
+  add_foreign_key "inventories", "orders"
+  add_foreign_key "inventory_details", "inventories"
+  add_foreign_key "inventory_details", "orders"
   add_foreign_key "memos", "orders"
   add_foreign_key "products", "suppliers"
   add_foreign_key "voucher_details", "orders"

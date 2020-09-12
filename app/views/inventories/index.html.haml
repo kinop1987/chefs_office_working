@@ -1,0 +1,46 @@
+.container_fluid
+  .row
+    .col
+      .col-8.mx-auto
+        %h4.text-center.text-primary 棚卸画面
+      .col-8.mx-auto
+        - if @receipt 
+          %p.text-danger 未受領の伝票があります。受領してください。
+          = link_to "受領画面", receipt_voucher_path, class: "btn btn-sucess text-right"
+      .col-10.mx-auto
+        = search_form_for @search do |search| 
+          = search.label :inventory_month_eq, '実施年月'
+          = search.collection_select :inventory_month_eq, @inventories, :id, :inventory_month
+          = search.submit "検索"
+      %table.table.table-borderd
+        %thread
+          %tr
+            %th.text-center.text-primary 取引先
+            %th.text-center.text-primary 前月棚卸高
+            %th.text-center.text-primary 当月棚卸高
+            %th.text-center.text-primary 当月 - 前月 
+            %th.text-center.text-primary 数量入力
+        %tbody
+          %tr
+            %td.text-center.text-primary
+            %td.text-center.text-primary
+              = @last_month_total_price
+            %td.text-center.text-primary
+              = @this_month_total_price
+            %td.text-center.text-primary
+              = @this_month_total_price - @last_month_total_price
+          - @inventories.each do |inventory|
+            %tr
+              %td.text-center.text-primary
+                = inventory.supplier.name
+              %td.text-center.text-primary
+                = @inventories.where(inventory_month: Date.current.prev_month, supplier_id: inventory.supplier_id).sum(:total_price)
+              %td.text-center.text-primary
+                = @inventories.where(inventory_month: Date.current, supplier_id: inventory.supplier_id).sum(:total_price)
+              %td.text-center.text-primary
+                = @inventories.where(inventory_month: Date.current.prev_month, supplier_id: inventory.supplier_id).sum(:total_price) - @inventories.where(inventory_month: Date.current, supplier_id: inventory.supplier_id).sum(:total_price)
+              %td.text-center.text-primary
+                -if @inventories.where(inventory_month: Date.current, supplier_id: inventory.supplier_id).count == 0
+                  = link_to "入力画面", new_inventory_path(inventory.supplier_id)
+                - else
+                  = link_to "入力画面", edit_inventory_path(inventory)
