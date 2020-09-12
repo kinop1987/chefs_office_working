@@ -6,4 +6,5 @@ class Cooking < ApplicationRecord
     validates :text, length: {maximum: 500}
   end
   accepts_nested_attributes_for :images
+  validates_associated :images
 end
