@@ -9,7 +9,7 @@
       .col
         = form_with model:@inventory , local: true do |form|
           = form.hidden_field :supplier_id, value: @supplier.id
-          = form.hidden_field :inventory_month, value: Date.current
+          = form.hidden_field :inventory_month, value:  Date.current.strftime('%Y-%m')
           .col.text-right
             = form.submit "保存する",class: "btn btn-info confirm"
             = link_to "戻る", :back, class: "btn btn-danger"
