@@ -21,9 +21,12 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :inventories do
+  resources :inventories , only: [:index, :edit, :create, :update] do
     member do
-      get 'new'
+      get 'new', to: "inventories#new", as: :new
+    end
+    collection do
+      get 'search'
     end
   end
   

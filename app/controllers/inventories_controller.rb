@@ -1,13 +1,17 @@
 class InventoriesController < ApplicationController
+  before_action :authenticate_order!
+  before_action :check_collect_order, only: [:edit, :update]
+  before_action :set_up_inventory, only: [:edit, :update]
+
 
   def index
-    @receipts = current_order.vouchers.where(confirm: 0)
+    @suppliers = Supplier.all
     @inventories = current_order.inventories
-    @this_month_total_price = current_order.inventories.where(inventory_month: Date.current).sum(:total_price)
-    @last_month_total_price = current_order.inventories.where(inventory_month: Date.current.prev_month).sum(:total_price)
-    @search = current_order.inventories.ransack(params[:q])
-    @results = @search.result(distinct: true).page(params[:page]).per(10)
+    @receipts = current_order.vouchers.where(confirm: 0)
+    @this_month_total_price = current_order.inventories.where(inventory_month:  Date.current.strftime('%Y-%m')).sum(:total_price)
+    @last_month_total_price = current_order.inventories.where(inventory_month: Date.current.prev_month.strftime('%Y-%m') ).sum(:total_price)
   end
+
 
   def new
     aggregation = VoucherDetail.group(:product_name, :product_unit).where(supplier_id: params[:id]).average(:unit_price)
@@ -32,6 +36,19 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
+  def update
+    if @inventory.update(update_inventory_params)
+      redirect_to inventories_path, notice: "保存しました"
+    else
+      redirect_to edit_inventory_path(@inventory), alert: "保存に失敗しました"
+    end
+
+  end
+
   private
 
   def inventory_params
@@ -50,6 +67,23 @@ class InventoriesController < ApplicationController
   rescue => e
     redirect_to new_inventory_path, alert: "入力内容が正しくありません" and return 
   end
+
+  def set_up_inventory
+    @inventory = Inventory.find(params[:id])
+  end
+
+  def update_inventory_params
+    params.require(:inventory).permit(inventory_details_attributes: [:quantity, :unit_price, :quantity, :product_name, :id ])
+  end
+
+  def check_collect_order
+    if @inventory.order_id != current_order.id
+      flash.now[:alert] = "権限がありません"
+      render root_path
+    end
+  end
+
+
 
 
 end
