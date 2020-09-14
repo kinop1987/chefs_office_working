@@ -37,6 +37,7 @@ test:
 #
 production:
   <<: *default
-  database: chefs_office_working_production
-  username: chefs_office_working
-  password: <%= ENV['CHEFS_OFFICE_WORKING_DATABASE_PASSWORD'] %>
+  host: chefs-office-working.cdio3wbmlpqq.ap-northeast-1.rds.amazonaws.com
+  database: chefs-office-working
+  username: admin
+  password: cbmhq68t
