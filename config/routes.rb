@@ -15,12 +15,15 @@ Rails.application.routes.draw do
   
 
   resources :memos 
+
   resources :products
+  
   resources :cookings do
     collection do
       get 'search'
     end
   end
+
   resources :inventories , only: [:index, :edit, :create, :update] do
     member do
       get 'new', to: "inventories#new", as: :new
