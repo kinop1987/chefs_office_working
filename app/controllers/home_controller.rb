@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index 
     require 'net/http'
     require 'uri'
@@ -39,5 +40,12 @@ class HomeController < ApplicationController
     @contracts = current_order.contracts
     @vouchers = current_order.vouchers
   end
-      
+
+  def suppliers
+    @suppliers = Supplier.all
+  end
+
+  def orders
+    @orders = Order.all
+  end    
 end

@@ -1,7 +1,8 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_order!
-  before_action :check_collect_order, only: [:edit, :update]
   before_action :set_up_inventory, only: [:edit, :update]
+  before_action :check_collect_order, only: [:edit, :update]
+ 
 
 
   def index

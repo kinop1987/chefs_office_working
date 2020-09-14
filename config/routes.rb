@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get "home/calculation", to: "home#calculation", as: :calculation
   get "home/calendar", to: "home#calendar", as: :calendar
-  
+  get "home/suppliers", to: "home#suppliers", as: :list_suppliers
+  get "home/orders", to: "home#orders", as: :list_orders
 
   resources :memos 
 
