@@ -2,8 +2,8 @@ class InventoryDetail < ApplicationRecord
   belongs_to :inventory
   with_options presence: true do
     validates :product_name
-    validates :unit_price, numericality: {only_integer: true, greater_than_or_equal_to: 0 }
-    validates :quantity, numericality: {only_integer: true}
+    validates :unit_price, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+    validates :quantity, numericality: {only_integer: true, greater_than_or_equal_to: 0}
     validates :inventory_day
     validates :product_unit
   end
