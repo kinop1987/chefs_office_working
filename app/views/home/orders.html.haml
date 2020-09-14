@@ -1,0 +1,25 @@
+.container_fluid
+  .row.m-1
+    .col-12.mx-auto.mt-5
+      .col.mx-auto
+        .text-primary.text-center.border.border-primary
+          %h2 取引先情報一覧
+        %table.table.table-bordered.m-1
+          %thread
+            %tr
+              %th.text-center.text-primary 取引先
+              %th.text-center.text-primary メールアドレス
+              %th.text-center.text-primary 電話番号
+              %th.text-center.text-primary 住所
+          %tbody
+            - @orders.each do |order| 
+              %tr
+                %td.text-center.text-primary
+                  = order.name
+                %td.text-center.text-primary
+                  = order.email
+                %td.text-center.text-primary
+                  = order.telephone
+                %td.text-center.text-primary
+                  = order.address
+            
