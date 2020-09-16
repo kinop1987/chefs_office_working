@@ -9,7 +9,6 @@ COPY Gemfile /chefs_office_working/Gemfile
 COPY Gemfile.lock /chefs_office_working/Gemfile.lock
 RUN bundle install
 COPY . /chefs_office_working
-RUN RAILS_ENV=${RAILS_ENV} bundle exec rails assets:precompile
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
