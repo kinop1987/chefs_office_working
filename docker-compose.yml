@@ -22,7 +22,6 @@ services:
       - db
     stdin_open: true
     tty: true
-    command: bundle exec puma -C config/puma.rb
   nginx:
     build:
       context: containers/nginx
