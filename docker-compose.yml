@@ -1,29 +1,25 @@
 version: '3'
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: root
-    ports:
-      - '4306:3306'
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - mysql-data:/var/lib/mysql
-  web:
+  app:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
-      - .:/chefs_office_working
-      - gem_data:/usr/local/bundle
+      - .:/myapp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    stdin_open: true
-    tty: true
-    command: bundle exec rails server -b 0.0.0.0
+      - 80:80
+
 volumes:
-  gem_data:
-  mysql-data:
-    driver: local
+
+  public-data:
+  tmp-data:
+  log-data:
