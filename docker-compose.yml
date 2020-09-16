@@ -4,17 +4,17 @@ services:
     build: .
     command: bundle exec puma -C config/puma.rb -e production
     volumes:
-      - .:/myapp
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
-      - log-data:/myapp/log
+      - .:/chefs_office_working
+      - public-data:/chefs_office_working/public
+      - tmp-data:/chefs_office_working/tmp
+      - log-data:/chefs_office_working/log
 
   web:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
+      - public-data:/chefs_office_working/public
+      - tmp-data:/chefs_office_working/tmp
     ports:
       - 80:80
 
