@@ -64,4 +64,4 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ransack'
-gem 'dotenv-rails'
+
