@@ -22,7 +22,7 @@
         .col.text-center
           -if @receipts >= 1
             %p.text-info 
-              %span.text-danger= @receipt
+              %span.text-danger= @receipts
               件の未受領伝票があります。受領してください
             %button.btn.btn-primary
               = link_to "受領画面", receipt_voucher_path, class: "text-right text-white"
