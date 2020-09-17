@@ -4,7 +4,7 @@
       = paginate @contracts, class: "text-primary "
     .col-10.mx-auto
       - @contracts.each do |contract|
-        .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
+        .col.border.border-info.mb-2{ style: "height: 40%; overflow-y: auto;"}
           .col.d-flex.justify-content-between
             %p.text-primary.mr-2= "取引先：#{contract.order.name}"
             %p.text-primary.mr-2= "配達希望日：#{contract.delivery_date}"
