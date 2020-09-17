@@ -32,12 +32,11 @@
 
 ### ■ テストユーザー
 #### 発注者 
-- メールアドレス:  kaisen@gmail.com
-- パスワード: kaisen
+- メールアドレス:  akasaka@example.com
+- パスワード: MBmxMhJzwv6H3gw
 #### 受注者
-- メールアドレス: yaoya@gmail.com
-- パスワード: yaoyayaoya
-
+- メールアドレス: nikuya@example.com
+- パスワード: qVQuFwK8tZNBuTW
 
 ## ■　主な使用技術
 <a><img src="https://user-images.githubusercontent.com/39142850/71774533-1ddf1780-2fb4-11ea-8560-753bed352838.png" width="70px;" /></a> <!-- rubyのロゴ -->
