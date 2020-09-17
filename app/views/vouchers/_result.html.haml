@@ -11,7 +11,7 @@
       = paginate results, class: "text-primary "
     .col-10.mx-auto
       - results.each do |voucher|
-        .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
+        .col.border.border-info.mb-2{ style: "height: 30%; overflow-y: auto;"}
           .col.d-flex
             %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
             %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
