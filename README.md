@@ -2,11 +2,16 @@
 
 <h1 align="center">ChefsOfficeWorking</h1>
 
-## ChefsOfficeWorkingはあなたの調理場内での作業を一手に引き受け、生産性を大幅に改善させます！
+## 調理場の事務作業をこれ１つに
 <a><img src="https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png" width="400px;" /></a>
 <a><img src="https://user-images.githubusercontent.com/63842526/93459163-475e8a00-f91c-11ea-9d2c-5802fb28457f.png" width="400px;" /></a><br>
 <a><img src="https://user-images.githubusercontent.com/63842526/93459199-534a4c00-f91c-11ea-97e3-4a22dbcf8349.png" width="400px;" /></a>
 <a><img src="https://user-images.githubusercontent.com/63842526/93459217-59402d00-f91c-11ea-9c84-44d102cb523e.png" width="400px;" /></a>
+
+###概要
+- 発注業務や、棚卸、原価計算など調理場内のあらゆる作業をこのアプリケーションで行います！
+- 直感的でわかりやすい見た目で作業が捗ります
+- 音声メモ機能あり！手が塞がっていても作業が行えます！
 
 ### ■ ドメイン
 * www.chefs-office-working.info
@@ -41,7 +46,8 @@
 <a><<img src="https://user-images.githubusercontent.com/39142850/71774644-115bbe80-2fb6-11ea-822c-568eabde5228.png" height="60px" /></a> <!-- Scssのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/39142850/71774768-d064a980-2fb7-11ea-88ad-4562c59470ae.png" height="65px;" /></a> <!-- jQueryのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/39142850/71774786-37825e00-2fb8-11ea-8b90-bd652a58f1ad.png" height="60px;" /></a> <!-- AWSのロゴ -->
-<a><img src="https://user-images.githubusercontent.com/63842526/93454266-b5538300-f915-11ea-8439-cd65c7a959f2.png" height="60px;" /></a>
+<a><img src="https://user-images.githubusercontent.com/63842526/93454266-b5538300-f915-11ea-8439-cd65c7a959f2.png" height="60px;" /></a> <!-- Dockerのロゴ -->
+
 ### ■ 言語
 
 #### バックエンド
