@@ -4,13 +4,13 @@
       = paginate @vouchers, class: "text-primary "
     .col-10.mx-auto
       - @vouchers.each do |voucher|
-        .col.border.border-info.mb-2{ style: "height: 20%; overflow-y: auto;"}
+        .col.border.border-info.mb-2{ style: "height: 50%; overflow-y: auto;"}
           = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
             .col.d-flex
               %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
               %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
               %p.text-primary= "合計金額：#{voucher.total_price}円"
-              %button.btn.btn-success.text-right= f.submit "受領画面"
+              = f.submit "受領画面", class: "btn btn-success text-right"
             %table.table.table-bordered.mt-1
               %thread
                 %tr
