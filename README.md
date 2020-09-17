@@ -4,7 +4,7 @@
 
 ## このアプリケーションについて
 * ChefsOfficeWorkingはあなたの調理場内での作業を一手に引き受け、生産性を大幅に改善させます！<br>
-<a><img src=""https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png" height="300px;" /></a>
+<a><img src=""https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png" width="300px;" /></a>
 
 ### ■ ドメイン
 * www.chefs-office-working.info
