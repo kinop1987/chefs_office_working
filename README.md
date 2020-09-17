@@ -1,23 +1,13 @@
 # README
 
-<h1 align="center">調理場用業務管理アプリ</h1>
+<h1 align="center">ChefsOfficeWorking</h1>
 
-## アプリケーション概要
-* 調理場内での発注管理や原価計算、メモ機能,レシピ投稿を備えた個人アプリです。
-* 作成期間： 2020/9/1 〜 2020/9/17
-* - ![top_page](https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png)
-* - ![top_page](https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png)
+## このアプリケーションについて
+* ChefsOfficeWorkingはあなたの調理場内での作業を一手に引き受け、生産性を大幅に改善させます！
+<a><img src="https://user-images.githubusercontent.com/63842526/93454266-b5538300-f915-11ea-8439-cd65c7a959f2.png" height="60px;" /></a>
 
 ### ■ ドメイン
 * www.chefs-office-working.info
-
-### ■ テストユーザー
-#### 発注者 
-- メールアドレス:  kaisen@gmail.com
-- パスワード: kaisen
-#### 受注者
-- メールアドレス: yaoya@gmail.com
-- パスワード: yaoyayaoya
 
 ## 機能一覧
 - ログイン登録、新規登録機能（発注者側、受注者側で別に行えます）。
@@ -33,6 +23,13 @@
 - 注文確認機能
 - 伝票作成機能
 
+### ■ テストユーザー
+#### 発注者 
+- メールアドレス:  kaisen@gmail.com
+- パスワード: kaisen
+#### 受注者
+- メールアドレス: yaoya@gmail.com
+- パスワード: yaoyayaoya
 
 
 ## 主な使用技術
