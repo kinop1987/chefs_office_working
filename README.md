@@ -3,10 +3,10 @@
 <h1 align="center">ChefsOfficeWorking</h1>
 
 ## 調理場の事務作業をこれ１つに
-<a><img src="https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png" width="400px;" /></a>
-<a><img src="https://user-images.githubusercontent.com/63842526/93459163-475e8a00-f91c-11ea-9d2c-5802fb28457f.png" width="400px;" /></a><br>
-<a><img src="https://user-images.githubusercontent.com/63842526/93459199-534a4c00-f91c-11ea-97e3-4a22dbcf8349.png" width="400px;" /></a>
-<a><img src="https://user-images.githubusercontent.com/63842526/93459217-59402d00-f91c-11ea-9c84-44d102cb523e.png" width="400px;" /></a>
+<a><img src="https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png" width="350px;" /></a>
+<a><img src="https://user-images.githubusercontent.com/63842526/93460782-b937d300-f91e-11ea-8506-bea61f46bc1b.jpg" width="350px;" /></a><br>
+<a><img src="https://user-images.githubusercontent.com/63842526/93459199-534a4c00-f91c-11ea-97e3-4a22dbcf8349.png" width="350px;" /></a>
+<a><img src="https://user-images.githubusercontent.com/63842526/93459217-59402d00-f91c-11ea-9c84-44d102cb523e.png" width="350px;" /></a>
 
 ###概要
 - 発注業務や、棚卸、原価計算など調理場内のあらゆる作業をこのアプリケーションで行います！
