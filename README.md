@@ -3,7 +3,7 @@
 <h1 align="center">ChefsOfficeWorking</h1>
 
 ## このアプリケーションについて
-* ChefsOfficeWorkingはあなたの調理場内での作業を一手に引き受け、生産性を大幅に改善させます！
+* ChefsOfficeWorkingはあなたの調理場内での作業を一手に引き受け、生産性を大幅に改善させます！<br>
 <a><img src="https://user-images.githubusercontent.com/63842526/93454266-b5538300-f915-11ea-8439-cd65c7a959f2.png" height="60px;" /></a>
 
 ### ■ ドメイン
