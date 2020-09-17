@@ -6,6 +6,7 @@
 * 調理場内での発注管理や原価計算、メモ機能,レシピ投稿を備えた個人アプリです。
 * 作成期間： 2020/9/1 〜 2020/9/17
 * - ![top_page](https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png)
+* - ![top_page](https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png)
 
 ### ■ ドメイン
 * www.chefs-office-working.info
@@ -64,23 +65,3 @@
 * Docker 19.03.12
 
 
-## :globe_with_meridians: インストール方法
-1.このリポジトリを複製<br>
-`$ git clone https://github.com/kinop1987/chefs_office_workingk`
-
-2.インストールしたリポジトリに移動<br>
-`$ cd chefs_office_working`
-
-3.gemをアプリケーションに適用<br>
-`$ bundle install`<br>
-
-4.DBの作成&反映<br>
-`$ rails db:create`<br>
-`$ rails db:migrate`<br>
-
-5.カテゴリ一覧の反映<br>
-`$ rails db:seed`<br>
-
-6.アプリケーションの起動<br>
-`$ rails s`<br>
-:point_right:`http://localhost:3000`
