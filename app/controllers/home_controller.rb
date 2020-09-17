@@ -34,6 +34,8 @@ class HomeController < ApplicationController
       now_month = Time.now.month
       @total_vouchers = current_order.vouchers.where(confirm: 1)
       @this_month_receipts = @total_vouchers.where('extract(month from delivery_date) = ?', now_month ).sum(:total_price)
+      @this_month_inventory = current_order.inventories.where(inventory_month:  Date.current.strftime('%Y-%m')).sum(:total_price)
+      @last_month_inventory = current_order.inventories.where(inventory_month: Date.current.prev_month.strftime('%Y-%m') ).sum(:total_price)
   end
 
   def calendar
