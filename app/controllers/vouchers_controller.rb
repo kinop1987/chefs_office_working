@@ -47,10 +47,7 @@ class VouchersController < ApplicationController
   end
 
   def confirm
-    if @voucher_details.valid?
-      flash.now[:alert] = "伝票内容が正しくありません"
-      render :new
-    end
+  
 
   end
 
