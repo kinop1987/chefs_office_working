@@ -3,12 +3,12 @@
 <h1 align="center">調理場用業務管理アプリ</h1>
 
 ## アプリケーション概要
-* 調理場内での発注管理や原価計算、メモ機能を備えた個人アプリです。
+* 調理場内での発注管理や原価計算、メモ機能,レシピ投稿を備えた個人アプリです。
 * 作成期間： 2020/9/1 〜 2020/9/17
 * - ![top_page](https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png)
 
-### ■ IPアドレス
-* 18.180.241.33
+### ■ ドメイン
+* www.chefs-office-working.info
 
 ### ■ テストユーザー
 #### 発注者 
@@ -41,6 +41,7 @@
 <a><<img src="https://user-images.githubusercontent.com/39142850/71774644-115bbe80-2fb6-11ea-822c-568eabde5228.png" height="60px" /></a> <!-- Scssのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/39142850/71774768-d064a980-2fb7-11ea-88ad-4562c59470ae.png" height="65px;" /></a> <!-- jQueryのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/39142850/71774786-37825e00-2fb8-11ea-8b90-bd652a58f1ad.png" height="60px;" /></a> <!-- AWSのロゴ -->
+<a><img src="https://user-images.githubusercontent.com/39142850/71774786-37825e00-2fb8-11ea-8b90-bd652a58f1ad.png" height="60px;" /></a>
 ### ■ 言語
 
 #### バックエンド
@@ -62,9 +63,6 @@
 * AWS S3
 * Docker 19.03.12
 
-
-### ■ デプロイ
-* Capistranoによる自動デプロイ
 
 ## :globe_with_meridians: インストール方法
 1.このリポジトリを複製<br>
