@@ -12,11 +12,11 @@
               %span.text-primary 円
             .col.form-group.d-flex
               %h4.text-primary 前月の棚卸高：
-              = form.text_field :last_invent, class: "text-success text-right w-50", id: "last_invent", placeholder: "入力してください"
+              = form.text_field :last_invent, class: "text-success text-right w-50", id: "last_invent", placeholder: "入力してください", value: @last_month_inventory
               %span.text-primary 円
             .col.form-group.d-flex
               %h4.text-primary 今月の棚卸高：
-              = form.text_field :this_invent, class: "text-success text-right w-50", id:"this_invent", placeholder: "入力してください"
+              = form.text_field :this_invent, class: "text-success text-right w-50", id:"this_invent", placeholder: "入力してください", value: @this_month_inventory
               %span.text-primary 円
             .col.form-group.d-flex
               %h4.text-primary 今月の仕入額：
