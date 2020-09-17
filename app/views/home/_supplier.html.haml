@@ -21,7 +21,7 @@
               %span.text-danger= @contracts
               件の注文があります。確認してください
             %button.btn.btn-primary
-              = link_to "確認画面", check_contracts_path
+              = link_to "確認画面", check_contract_path
           -else @contracts == nil
             %p.text-danger 新規の注文はありません
       .col-10.border.border-primary.mb-4.mx-auto
