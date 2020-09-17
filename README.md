@@ -5,7 +5,7 @@
 ## アプリケーション概要
 * 調理場内での発注管理や原価計算、メモ機能を備えた個人アプリです。
 * 作成期間： 2020/9/1 〜 2020/9/14
-* - ![top_page](https://user-images.githubusercontent.com/63842526/91662432-5623ff00-eb1d-11ea-8340-93c87434efcd.png)
+* - ![top_page]("https://user-images.githubusercontent.com/63842526/93452657-a10e8680-f913-11ea-8e96-1f1c80eb962a.png")
 
 ### ■ IPアドレス
 * 18.180.241.33
