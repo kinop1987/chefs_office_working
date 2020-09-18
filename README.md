@@ -14,7 +14,7 @@
 - 音声メモ機能あり！手が塞がっていても作業が行えます！
 
 ### ■ ドメイン
-* www.chefs-office-working.info
+* https://www.chefs-office-working.info
 
 ## ■ 機能一覧
 - ログイン登録、新規登録機能（発注者側、受注者側で別に行えます）。
