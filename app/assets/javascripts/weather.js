@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
     let icon = data.list[i].weather[0].icon;
     let html =
     '<div class="weather-report">' +
-      '<img src="http://openweathermap.org/img/w/' + icon + '.png">' +
+      '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
       '<div class="weather-date">' + day + '</div>' +
       '<div class="weather-temp-max text-danger">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
       '<span class="weather-temp-min text-primary">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
 
   let API_KEY = 'e6bc9cf9236873da84e388bbc368a2e2'
   let city = 'Tokyo';
-  let url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+  let url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
   $.ajax({
     url: url,
     dataType: "json",
