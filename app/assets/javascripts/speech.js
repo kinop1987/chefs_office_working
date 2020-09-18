@@ -2,17 +2,16 @@ $(document).on('turbolinks:load', function() {
   const speech = new webkitSpeechRecognition();
   speech.lang = 'ja-JP';
 
-  const btn = $('#startSpeech');
-  const content = $('#speechContent');
-  btn.click(function(){
-        console.log(speech)
+  const content = document.getElementById('speechContent');
+  $('#startSpeech').click(function(){
+        console.log(content)
       speech.start();
   })
 
   speech.onresult = function(e) {
        speech.stop();
        if(e.results[0].isFinal){
-           const autotext =  e.results[0][0].transcript
+           let autotext =  e.results[0][0].transcript
            content.value += autotext + '\n';
         }
    }
@@ -24,4 +23,3 @@ $(document).on('turbolinks:load', function() {
 
   });
 
- 
