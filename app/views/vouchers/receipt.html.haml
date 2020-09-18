@@ -4,7 +4,7 @@
       = paginate @vouchers, class: "text-primary "
     .col-10.mx-auto
       - @vouchers.each do |voucher|
-        .col.border.border-info.mb-2{ style: "height: 50%; overflow-y: auto;"}
+        .col.border.border-info.mb-2{ style: "height: 200px; overflow-y: auto;"}
           = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
             .col.d-flex
               %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
