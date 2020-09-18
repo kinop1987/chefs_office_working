@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
 
   const btn = $('#startSpeech');
   const content = $('#speechContent');
-  btn.addEventListener('click', function(){
+  btn.click(function(){
         console.log(speech)
       speech.start();
   })
