@@ -2,8 +2,9 @@ $(document).on('turbolinks:load', function() {
   const speech = new webkitSpeechRecognition();
   speech.lang = 'ja-JP';
 
+  const btn = $('#startSpeech');
   const content = $('#speechContent');
-  $('#startSpeech').on('click', function(){
+  btn.addEventListener('click', function(){
         console.log(speech)
       speech.start();
   })
@@ -19,4 +20,8 @@ $(document).on('turbolinks:load', function() {
    speech.onend = () => { 
       speech.start() 
    };
+
+
   });
+
+ 
