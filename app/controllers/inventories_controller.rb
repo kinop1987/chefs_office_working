@@ -2,7 +2,6 @@ class InventoriesController < ApplicationController
   before_action :authenticate_order!
   before_action :set_up_inventory, only: %i[edit update]
   before_action :check_collect_order, only: %i[edit update]
-  before_action :search_inventories, only: %i[index search]
 
   def index
     @suppliers = Supplier.all
@@ -10,12 +9,6 @@ class InventoriesController < ApplicationController
     @receipts = current_order.vouchers.where(confirm: 0)
     @this_month_total_price = current_order.inventories.where(inventory_month: Date.current.strftime('%Y-%m')).sum(:total_price)
     @last_month_total_price = current_order.inventories.where(inventory_month: Date.current.prev_month.strftime('%Y-%m')).sum(:total_price)
-  end
-
-  def search
-    @suppliers = Supplier.all
-    @results = @search.result(distinct: true).page(params[:page]).per(4)
-    @this_month_total_price = @results.sum(:total_price)
   end
 
   def new
@@ -83,17 +76,6 @@ class InventoriesController < ApplicationController
       flash.now[:alert] = '権限がありません'
       render root_path
     end
-  end
-
-  def search_inventories
-    @search = current_order.inventories.ransack(params[:q])
-    inventories = current_order.inventories.group(:inventory_month).count
-    array = []
-    inventories.each do |i|
-      array <<  i
-    end
-    @inventories = Hash[*array.flatten]
-
   end
 
 

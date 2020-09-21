@@ -29,9 +29,6 @@ Rails.application.routes.draw do
     member do
       get 'new', to: 'inventories#new', as: :new
     end
-    collection do
-      get 'search', to:'inventories#search'
-    end
   end
 
   resources :contracts, only: %i[index show] do
