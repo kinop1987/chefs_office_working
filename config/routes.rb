@@ -59,7 +59,7 @@ Rails.application.routes.draw do
       get 'group/:delivery_date', to: 'contracts#group', as: :group
       get 'receipt', to: 'vouchers#receipt'
       get 'aggregation', to: 'vouchers#aggregation'
-      get 'vouchers/search', to: 'vouchers#search', as: :search_vouchers
+      get 'vouchers/search', to: 'vouchers#search'
     end
   end
 
