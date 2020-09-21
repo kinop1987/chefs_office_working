@@ -34,19 +34,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contracts, only: %i[index show] do 
-    member do
-      get 'new'
-      post 'create'
-      post 'confirm'
-    end
-    collection do
-      get 'suppliers_contract'
-      get 'check'
-      get 'group/:delivery_date'
-    end
-  end
-
+  get 'contracts/:supplier_id/new', to: 'contracts#new', as: :new_contract
+  post 'contracts/:supplier_id', to: 'contracts#create', as: :create_contract
+  post 'contracts/:supplier_id/confirm', to: 'contracts#confirm', as: :confirm_contract
+  get 'contracts/suppliers_contract', to: 'contracts#suppliers_contract', as: :suppliers_contract
+  get 'contracts/check', to: 'contracts#check', as: :check_contract
+  get 'contracts/:contract_id', to: 'contracts#show', as: :show_contract
+  get 'contracts/group/:delivery_date', to: 'contracts#group', as: :group_contract
+  get 'contracts', to: 'contracts#index'
 
   get 'vouchers/:contract_id/new', to: 'vouchers#new', as: :new_voucher
   post 'vouchers/:contract_id', to: 'vouchers#create', as: :create_voucher
