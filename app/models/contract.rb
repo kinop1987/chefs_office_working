@@ -7,7 +7,7 @@ class Contract < ApplicationRecord
     validates :delivery_date
     validates :confirm
   end
-  validates :comment,     length: {maximum: 200}
+  validates :comment, length: { maximum: 200 }
   validate  :date_not_before_today
 
   accepts_nested_attributes_for :contract_details

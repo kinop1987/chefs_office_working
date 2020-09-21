@@ -23,7 +23,6 @@ services:
     stdin_open: true
     tty: true
     command: bundle exec pumactl start
-    command: rubocop --auto-gen-config 
   nginx:
     build:
       context: containers/nginx

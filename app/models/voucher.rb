@@ -7,7 +7,7 @@ class Voucher < ApplicationRecord
     validates :delivery_date
     validates :confirm
   end
-  validates :comment, length: {maximum: 200}
+  validates :comment, length: { maximum: 200 }
   validate  :date_not_before_today
 
   accepts_nested_attributes_for :voucher_details
@@ -21,8 +21,4 @@ class Voucher < ApplicationRecord
   def date_not_before_today
     errors.add(:delivery_date) if delivery_date.nil? || delivery_date < Date.today
   end
-
-  
-
-
 end

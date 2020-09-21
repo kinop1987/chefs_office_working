@@ -14,5 +14,4 @@ class Inventory < ApplicationRecord
     inventory_details.each(&:calculate_inventory_detail_total_price)
     self.total_price = inventory_details.map(&:total_price).sum
   end
-
 end
