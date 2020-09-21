@@ -6,12 +6,12 @@
           = date.day
           - if @contracts.where(delivery_date: date).count > 0 && @vouchers.where(delivery_date: date).count > 0
             .col.text-center
-              = link_to "注文", group_contract_path(l date)
+              = link_to "注文", group_contracts_path(l date)
             .col.text-center
               = link_to "伝票", group_voucher_path(l date)
           - elsif @contracts.where(delivery_date: date).count > 0 && @vouchers.where(delivery_date: date).count == 0
             .col.text-center
-              = link_to "注文", group_contract_path(l date)
+              = link_to "注文", group_contracts_path(l date)
           - elsif @contracts.where(delivery_date: date).count == 0 && @vouchers.where(delivery_date: date).count > 0
             .col.text-center
               = link_to "伝票", group_voucher_path(l date)
