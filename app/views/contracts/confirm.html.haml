@@ -8,7 +8,7 @@
             %th.text-primary.text-right 取引先：
             %th.text-success= @supplier.name      
       .col
-        = form_with model:@contract, url: create_contract_path(@supplier), local:true do |form|
+        = form_with model:@contract, url: contracts_path(@supplier), local:true do |form|
           = form.hidden_field :supplier_id, value: @supplier.id
           = form.hidden_field :order_id, value: current_order.id
           .col.text-right.mt-2

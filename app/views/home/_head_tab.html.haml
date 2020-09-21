@@ -34,8 +34,8 @@
                                                 aria: { haspopup: "true",
                                                         expanded: "false"}} 注文管理
         .dropdown-menu
-          = link_to "注文確認", check_contract_path, class: "dropdown-item text-primary "
-          = link_to "過去の注文", suppliers_contract_path, class: "dropdown-item text-primary "
+          = link_to "注文確認", check_contracts_path, class: "dropdown-item text-primary "
+          = link_to "過去の注文", suppliers_contracts_path, class: "dropdown-item text-primary "
           = link_to "伝票一覧", suppliers_voucher_path, class: "dropdown-item text-primary "
       .col.border.border-primary.text-center.pt-2= link_to '取引先情報', list_orders_path
       .col.border.border-primary.text-center.pt-2=link_to "ログアウト", destroy_supplier_session_path, method: :delete
