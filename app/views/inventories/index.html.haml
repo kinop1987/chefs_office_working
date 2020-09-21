@@ -6,8 +6,8 @@
       .col-10.mx-auto.text-right.mb-2
         = search_form_for @search, url: search_inventories_path do |search| 
           = search.label :実施年月
-          = search.date_select :inventoy_month__gteq,  {:discard_day => true} 
-          = search.date_select :inventoy_month__lteq,  class: "hidden"
+          = search.date_select :inventoy_month_gteq,  {:discard_day => true} 
+          = search.date_select :inventoy_month_lteq,  class: "hidden"
           = search.submit "検索"
       %table.table.table-borderd
         %thread
