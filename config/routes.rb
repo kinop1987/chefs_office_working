@@ -54,12 +54,12 @@ Rails.application.routes.draw do
       post 'confirm', to: 'vouchers#confirm'
     end
     collection do
+      get 'vouchers/search', to: 'vouchers#search'
       get 'orders_voucher', to: 'vouchers#orders_voucher', as: :orders
       get 'suppliers_voucher', to: 'vouchers#suppliers_voucher', as: :suppliers
       get 'group/:delivery_date', to: 'contracts#group', as: :group
       get 'receipt', to: 'vouchers#receipt'
-      get 'aggregation', to: 'vouchers#aggregation'
-      get 'vouchers/search', to: 'vouchers#search'
+      get 'aggregation', to: 'vouchers#aggregation' 
     end
   end
 
