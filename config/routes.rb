@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contracts, only: [:index, :show] do 
+  resources :contracts, only: %i[index show] do 
     member do
       get 'new'
       post 'create'
