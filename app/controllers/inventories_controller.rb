@@ -88,7 +88,7 @@ class InventoriesController < ApplicationController
   def search_inventories
     @search = current_order.inventories.ransack(params[:q])
     inventories = current_order.inventories.group(:inventory_month).count
-    hash = []
+    hash = {}
     inventories.each do |i|
       hash << i
     end
