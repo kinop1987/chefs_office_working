@@ -46,7 +46,6 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn', '5.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,4 +64,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'ransack'
 gem 'fog-aws'
-
+gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec'
