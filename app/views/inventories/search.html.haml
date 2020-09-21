@@ -6,7 +6,7 @@
       .col-10.mx-auto.text-right.mb-2
         = search_form_for @search, url: search_inventories_path do |search| 
           = search.label :inventory_month_cont, '実施年月'
-          = search.collection_select :inventory_month_cont, @inventories, :id, : @inventory
+          = search.collection_select :inventory_month_cont, @inventories.keys
           = search.submit "検索"
       %table.table.table-borderd
         %thread
