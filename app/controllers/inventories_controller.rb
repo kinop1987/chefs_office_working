@@ -92,6 +92,7 @@ class InventoriesController < ApplicationController
     inventories.each do |i|
       hash << i
     end
+    @inventories = {}.merge(*hash)
   end
-  @inventories = {}.merge(*hash)
+
 end
