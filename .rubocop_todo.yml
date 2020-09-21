@@ -1,0 +1,65 @@
+
+# Offense count: 4
+# Configuration parameters: IgnoredMethods.
+Metrics/AbcSize:
+  Max: 49
+
+# Offense count: 18
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
+# ExcludedMethods: refine
+#Metrics/BlockLength:
+#  Max: 158
+
+# Offense count: 4
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
+Metrics/MethodLength:
+  Max: 23
+
+# Offense count: 14
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: nested, compact
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/orders/confirmations_controller.rb'
+    - 'app/controllers/orders/omniauth_callbacks_controller.rb'
+    - 'app/controllers/orders/passwords_controller.rb'
+    - 'app/controllers/orders/registrations_controller.rb'
+    - 'app/controllers/orders/sessions_controller.rb'
+    - 'app/controllers/orders/unlocks_controller.rb'
+    - 'app/controllers/suppliers/confirmations_controller.rb'
+    - 'app/controllers/suppliers/omniauth_callbacks_controller.rb'
+    - 'app/controllers/suppliers/passwords_controller.rb'
+    - 'app/controllers/suppliers/registrations_controller.rb'
+    - 'app/controllers/suppliers/sessions_controller.rb'
+    - 'app/controllers/suppliers/unlocks_controller.rb'
+    - 'app/models/form/base.rb'
+    - 'app/models/form/product_collection.rb'
+
+# Offense count: 55
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 118
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: always, always_true, never
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Offense count: 5
+# Configuration parameters: MinBodyLength.
+Style/GuardClause:
+  Exclude:
+    - 'app/controllers/cookings_controller.rb'
+    - 'app/controllers/home_controller.rb'
+    - 'app/controllers/inventories_controller.rb'
+    - 'app/controllers/memos_controller.rb'
+    - 'app/controllers/products_controller.rb'
+
+# Offense count: 22
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Layout/LineLength:
+  Max: 173

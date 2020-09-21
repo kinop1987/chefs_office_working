@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :memo do
-    text {"テキスト"}
+    text { 'テキスト' }
   end
 end

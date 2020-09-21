@@ -1,13 +1,13 @@
 class ContractsController < ApplicationController
-  before_action :create_params_contracts, only: [:create,:confirm]
-  before_action :set_up_supplier, only: [:new,:create,:confirm]
-  
+  before_action :create_params_contracts, only: %i[create confirm]
+  before_action :set_up_supplier, only: %i[new create confirm]
+
   def index
     @suppliers = Supplier.all
   end
 
   def suppliers_contract
-    @contracts = current_supplier.contracts.where(confirm: 1).order("delivery_date DESC").page(params[:page]).per(4)
+    @contracts = current_supplier.contracts.where(confirm: 1).order('delivery_date DESC').page(params[:page]).per(4)
   end
 
   def check
@@ -22,16 +22,14 @@ class ContractsController < ApplicationController
 
   def create
     if @contract.save
-      redirect_to contracts_path, success: "発注を完了しました"
+      redirect_to contracts_path, success: '発注を完了しました'
     else
-      flash.now[:alert] = "注文に失敗しました"
+      flash.now[:alert] = '注文に失敗しました'
       render :new
     end
   end
-    
 
-  def confirm
-  end
+  def confirm; end
 
   def show
     @contract = Contract.find(params[:contract_id])
@@ -41,28 +39,24 @@ class ContractsController < ApplicationController
     @contracts = current_order.contracts.where(delivery_date: params[:delivery_date]).page(params[:page]).per(4)
   end
 
-
   private
 
   def contract_params
     params
       .require(:contract).permit(:order_id,
-                              :supplier_id,
-                              :total_price,
-                              :delivery_date,
-                              :comment).merge(confirm: 0)
+                                 :supplier_id,
+                                 :total_price,
+                                 :delivery_date,
+                                 :comment).merge(confirm: 0)
   end
 
   def contract_details_params
     params.require(:contract_details).map do |param|
       ActionController::Parameters.new(param.to_unsafe_h).permit(:unit_price, :quantity, :product_name, :total_price, :order_id, :supplier_id, :delivery_date, :product_unit)
     end
-  rescue => e
-    redirect_to new_contract_path, alert: "入力内容が正しくありません" and return  
-    
-
+  rescue StandardError => e
+    redirect_to new_contract_path, alert: e.message and return
   end
-
 
   def create_params_contracts
     @contract = Contract.new(contract_params)
@@ -73,7 +67,4 @@ class ContractsController < ApplicationController
     @supplier = Supplier.find(params[:supplier_id])
     @products = @supplier.products
   end
-
- 
-
 end

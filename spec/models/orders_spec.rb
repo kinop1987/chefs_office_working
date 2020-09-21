@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  before do 
+  before do
     @order = build(:order)
   end
 
@@ -25,14 +25,14 @@ RSpec.describe Order, type: :model do
       expect(@order.valid?).to eq(false)
     end
 
-     it 'addressが空だとNG' do
-       @order.address = ''
-       expect(@order.valid?).to eq(false)
-     end
+    it 'addressが空だとNG' do
+      @order.address = ''
+      expect(@order.valid?).to eq(false)
+    end
 
-     it 'passwordが空だとNG' do
-       @order.password = ''
-       expect(@order.valid?).to eq(false)
-     end
+    it 'passwordが空だとNG' do
+      @order.password = ''
+      expect(@order.valid?).to eq(false)
     end
   end
+end

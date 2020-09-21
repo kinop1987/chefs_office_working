@@ -4,23 +4,21 @@ class Form::ProductCollection < Form::Base
 
   def initialize(attributes = {})
     super attributes
-    self.products = FORM_COUNT.times.map { Product.new() } unless self.products.present?
+    self.products = FORM_COUNT.times.map { Product.new } unless products.present?
   end
-  
+
   def products_attributes=(attributes)
     self.products = attributes.map { |_, v| Product.new(v) }
   end
 
   def save
     Product.transaction do
-      self.products.map do |product|
-        if product.availability == true
-          product.save!
-        end
+      products.map do |product|
+        product.save! if product.availability == true
       end
     end
-      return true
-    rescue => e
-      return false
+    true
+  rescue StandardError => e
+    reidrect_to new_prodct_path, alert: e.message and return
   end
 end

@@ -30,17 +30,21 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 4.0.1'
-  gem "factory_bot_rails"
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -49,22 +53,18 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.1.1'
-gem 'jquery-rails'
-gem 'haml-rails'
-gem 'pry-rails'
+gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n-views'
-gem 'rails-i18n', '~> 6.0.0'
-gem 'simple_calendar', '~> 2.0'
-gem 'news-api-ruby-rails', '~> 0.0.2'
-gem 'kaminari'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'ransack'
 gem 'fog-aws'
-gem 'rubocop', require: false
-gem 'rubocop-performance', require: false
-gem 'rubocop-rails', require: false
-gem 'rubocop-rspec'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'news-api-ruby-rails', '~> 0.0.2'
+gem 'pry-rails'
+gem 'rails-i18n', '~> 6.0.0'
+gem 'ransack'
+gem 'simple_calendar', '~> 2.0'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -2,16 +2,15 @@ class ContractDetail < ApplicationRecord
   belongs_to :contract
   with_options presence: true do
     validates :product_name
-    validates :quantity, numericality: {only_integer: true, greater_than_or_equal_to: 0 }
+    validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
     validates :delivery_date
     validates :product_unit
   end
-  validate  :date_not_before_today
-
+  validate :date_not_before_today
 
   def calculate_contract_detail_total_price
-    self.total_price = self.unit_price * self.quantity
-  rescue
+    self.total_price = unit_price * quantity
+  rescue StandardError
     self.total_price = 0
   end
 

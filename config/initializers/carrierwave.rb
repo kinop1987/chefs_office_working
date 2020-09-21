@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'chef-office-woking-s3'
+  config.fog_directory = 'chef-office-woking-s3'
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chef-office-woking-s3'
 end

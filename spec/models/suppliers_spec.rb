@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Supplier, type: :model do
-  before do 
+  before do
     @supplier = build(:supplier)
   end
 
@@ -25,19 +25,19 @@ RSpec.describe Supplier, type: :model do
       expect(@supplier.valid?).to eq(false)
     end
 
-     it 'websiteが空だとNG' do
-       @supplier.website = ''
-       expect(@supplier.valid?).to eq(false)
-     end
+    it 'websiteが空だとNG' do
+      @supplier.website = ''
+      expect(@supplier.valid?).to eq(false)
+    end
 
-     it 'passwordが空だとNG' do
-       @supplier.password = ''
-       expect(@supplier.valid?).to eq(false)
-     end
+    it 'passwordが空だとNG' do
+      @supplier.password = ''
+      expect(@supplier.valid?).to eq(false)
+    end
 
-     it 'picが空だとNG' do
-       @supplier.pic = ''
-       expect(@supplier.valid?).to eq(false)
-     end
+    it 'picが空だとNG' do
+      @supplier.pic = ''
+      expect(@supplier.valid?).to eq(false)
     end
   end
+end

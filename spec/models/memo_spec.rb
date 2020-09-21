@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
-  before do 
+  before do
     order = create(:order)
     @memo = build(:memo, order_id: order.id)
   end
@@ -12,10 +12,8 @@ RSpec.describe Memo, type: :model do
     end
 
     it 'textがなければNG' do
-      @memo.text = ""
+      @memo.text = ''
       expect(@memo.valid?).to eq(false)
     end
   end
-
-
 end
