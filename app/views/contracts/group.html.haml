@@ -6,7 +6,7 @@
       - @contracts.each do |contract|
         .col.border.border-info.mb-2{ style: "height: 200px; overflow-y: auto;"}
           .col.d-flex.justify-content-between
-            %p.text-primary.mr-2= "取引先：#{contract.order.name}"
+            %p.text-primary.mr-2= "取引先：#{contract.supplier.name}"
             %p.text-primary.mr-2= "配達希望日：#{contract.delivery_date}"
             %p.text-primary= "合計金額：#{contract.total_price}円"
           .col.text-right.mb-2
