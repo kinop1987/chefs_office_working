@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       get 'new', to: 'inventories#new', as: :new
     end
     collection do
-      get 'search'
+      get 'search', to:'inventories#search'
     end
   end
 
