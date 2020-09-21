@@ -43,21 +43,24 @@ Rails.application.routes.draw do
     collection do
       get 'suppliers_contract', to: 'contracts#suppliers_contract', as: :suppliers
       get 'check', to: 'contracts#check'
-      get 'group/:delivery_date', to: 'vouchers#group', as: :group
+      get 'group/:delivery_date', to: 'contracts#group', as: :group
     end
   end
 
+  resources :vouchers, only: %i[index show edit update] do
+    member do 
+      get 'new', to: 'vouchers#new', as: :new
+      post '',    to: 'vouchers#create'
+      post 'confirm', to: 'vouchers#confirm'
+    end
+    collection do
+      get 'orders_voucher', to: 'vouchers#orders_voucher', as: :orders
+      get 'suppliers_voucher', to: 'vouchers#suppliers_voucher', as: :suppliers
+      get 'group/:delivery_date', to: 'contracts#group', as: :group
+      get 'receipt', to: 'vouchers#receipt'
+      get 'aggregation', to: 'vouchers#aggregation'
+      get 'vouchers/search', to: 'vouchers#search', as: :search_vouchers
+    end
+  end
 
-  get 'vouchers/:contract_id/new', to: 'vouchers#new', as: :new_voucher
-  post 'vouchers/:contract_id', to: 'vouchers#create', as: :create_voucher
-  post 'vouchers/:contract_id/confirm', to: 'vouchers#confirm', as: :confirm_voucher
-  get 'vouchers/group/:delivery_date', to: 'vouchers#group', as: :group_voucher
-  get 'vouchers/orders_voucher', to: 'vouchers#orders_voucher', as: :orders_voucher
-  get 'vouchers/suppliers_voucher', to: 'vouchers#suppliers_voucher', as: :suppliers_voucher
-  get 'vouchers/:voucher_id/edit', to: 'vouchers#edit', as: :edit_voucher
-  get 'vouchers/receipt', to: 'vouchers#receipt', as: :receipt_voucher
-  post 'vouchers/:voucher_id/show', to: 'vouchers#show', as: :show_receipt
-  post 'vouchers/:voucher_id/update', to: 'vouchers#update', as: :update_voucher
-  get 'vouchers/aggregation', to: 'vouchers#aggregation', as: :aggregation
-  get 'vouchers/search', to: 'vouchers#search', as: :search_vouchers
 end

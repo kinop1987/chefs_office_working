@@ -1,7 +1,7 @@
 .container
   .row
     .col-8.mx-auto
-      = form_with model: @voucher, url: update_voucher_path(@voucher), method: :post, local: true do |f|
+      = form_with model: @voucher, url: voucher_path(@voucher), method: :post, local: true do |f|
         %table.table
           %tread
             %tr

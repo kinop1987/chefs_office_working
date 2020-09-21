@@ -36,11 +36,11 @@ class VouchersController < ApplicationController
   end
 
   def show
-    @voucher = Voucher.find(params[:voucher_id])
+    @voucher = Voucher.find(params[:id])
   end
 
   def update
-    @voucher = Voucher.find(params[:voucher_id])
+    @voucher = Voucher.find(params[:id])
     @voucher.update(confirm: 1)
     redirect_to receipt_voucher_path, success: '伝票を受領しました'
   end
@@ -92,7 +92,7 @@ class VouchersController < ApplicationController
   end
 
   def set_up_contract
-    @contract = Contract.find(params[:contract_id])
+    @contract = Contract.find(params[:id])
     @contract_details = @contract.contract_details
   end
 

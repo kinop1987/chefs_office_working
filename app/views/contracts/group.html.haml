@@ -10,7 +10,7 @@
             %p.text-primary.mr-2= "配達希望日：#{contract.delivery_date}"
             %p.text-primary= "合計金額：#{contract.total_price}円"
           .col.text-right.mb-2
-            = link_to "詳細", show_contract_path(contract), class: "btn btn-success text-white "
+            = link_to "詳細", contract_path(contract), class: "btn btn-success text-white "
           %table.table.table-bordered
             %thread
               %tr
