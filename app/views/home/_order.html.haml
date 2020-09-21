@@ -25,7 +25,7 @@
               %span.text-danger= @receipts
               件の未受領伝票があります。受領してください
             %button.btn.btn-primary
-              = link_to "受領画面", receipt_voucher_path, class: "text-right text-white"
+              = link_to "受領画面", receipt_vouchers_path, class: "text-right text-white"
           -else @receipts == nil
             %p.text-danger 未受領の伝票はありません
       .col-10.border.border-primary.mb-4.mx-auto

@@ -5,7 +5,7 @@
     .col-10.mx-auto
       - @vouchers.each do |voucher|
         .col.border.border-info.mb-2{ style: "height: 200px; overflow-y: auto;"}
-          = form_with model: voucher, url: show_receipt_path(voucher), method: :post, local: true do |f|
+          = form_with model: voucher, url: voucher_path(voucher), method: :post, local: true do |f|
             .col.d-flex
               %p.text-primary.mr-2= "取引先：#{voucher.supplier.name}"
               %p.text-primary.mr-2= "納品日：#{voucher.delivery_date}"
