@@ -93,8 +93,7 @@ class InventoriesController < ApplicationController
       array <<  i
     end
     @inventories = Hash[*array.flatten]
-    @array2 = []
-    @inventories.select {|k, v| @array2 << k }
+
   end
 
 
