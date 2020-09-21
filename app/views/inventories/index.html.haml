@@ -3,6 +3,11 @@
     .col
       .col-8.mx-auto
         %h4.text-center.text-primary 棚卸画面
+      .col-10.mx-auto.text-right.mb-2
+        = search_form_for @search, url: search_inventories_path do |search| 
+          = search.label :inventory_month_cont, '実施年月'
+          = search= f.date_select :inventoy_month_cont, , {:discard_day => true}
+          = search.submit "検索"
       %table.table.table-borderd
         %thread
           %tr
