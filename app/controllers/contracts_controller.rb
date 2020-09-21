@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
   def confirm; end
 
   def show
-    @contract = Contract.find(params[:contract_id])
+    @contract = Contract.find(params[:id])
   end
 
   def group
@@ -64,7 +64,7 @@ class ContractsController < ApplicationController
   end
 
   def set_up_supplier
-    @supplier = Supplier.find(params[:supplier_id])
+    @supplier = Supplier.find(params[:id])
     @products = @supplier.products
   end
 end
