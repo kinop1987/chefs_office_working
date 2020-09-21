@@ -90,7 +90,7 @@ class InventoriesController < ApplicationController
     inventories = current_order.inventories.group(:inventory_month).count
     hash = {}
     inventories.each do |i|
-      hash << i
+      hash < i
     end
     @inventories = {}.merge(*hash)
   end
