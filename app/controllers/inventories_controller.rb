@@ -87,5 +87,6 @@ class InventoriesController < ApplicationController
 
   def search_inventories
     @search = current_order.inventories.ransack(params[:q])
+    @inventories = current_order.inventories
   end
 end
