@@ -28,7 +28,7 @@ class VouchersController < ApplicationController
   def create
     if @voucher.save
       @contract.update(confirm: 1)
-      redirect_to check_contract_path, success: '伝票を作成しました'
+      redirect_to check_contracts_path, success: '伝票を作成しました'
     else
       flash.now[:alert] = '伝票作成に失敗しました'
       render :new

@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     uri = URI.parse('https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=f0c88792e99f44c2a8b81084b8bf9b39')
     json = Net::HTTP.get(uri)
     moments = JSON.parse(json)
+    @moments = moments['articles'].last(20)
 
     if order_signed_in?
       now_month = Time.now.month
@@ -14,7 +15,6 @@ class HomeController < ApplicationController
       @today_total_receipts = @vouchers.where(delivery_date: Date.current).sum(:total_price)
       @this_month_receipts = @vouchers.where('extract(month from delivery_date) = ?', now_month).sum(:total_price)
       @receipts = current_order.vouchers.where(confirm: 0).count
-      @moments = moments['articles'].last(20)
     end
 
     if supplier_signed_in?
@@ -24,7 +24,6 @@ class HomeController < ApplicationController
       @today_total_receipts = @vouchers.where(delivery_date: Date.current).sum(:total_price)
       @this_month_receipts = @vouchers.where('extract(month from delivery_date) = ?', now_month).sum(:total_price)
       @contracts = current_supplier.contracts.where(confirm: 0).count
-      @moments = moments['articles'].last(20)
     end
   end
 
