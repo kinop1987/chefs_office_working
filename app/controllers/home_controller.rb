@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     uri = URI.parse('https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=f0c88792e99f44c2a8b81084b8bf9b39')
     json = Net::HTTP.get(uri)
     moments = JSON.parse(json)
-    @moments = moments['articles'].last(20)
+    #@moments = moments['articles'].last(20)
 
     if order_signed_in?
       now_month = Time.now.month
