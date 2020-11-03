@@ -54,7 +54,7 @@
           .col.bg-primary
             %h2.text-white.text-center ニュース一覧
           .col{ style: "height: 80%; overflow-y: auto;"}
-            -if @moments == nul
+            -if @moments == nil
               %p ただいま記事を更新中です
             - else
               - @moments.each do |moment|
