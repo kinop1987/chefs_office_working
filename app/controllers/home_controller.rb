@@ -7,6 +7,9 @@ class HomeController < ApplicationController
     json = Net::HTTP.get(uri)
     moments = JSON.parse(json)
     @moments = moments['articles'].last(20)
+    if @moments == nil
+      @moments = ["ただいま記事を更新中です。"]
+    end
 
     if order_signed_in?
       now_month = Time.now.month
